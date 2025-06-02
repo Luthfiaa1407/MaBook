@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Readify | Perpustakaan Digital Dark Academia</title>
+    <title>MaBook | Perpustakaan Digital Dark Academia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -534,7 +534,7 @@
         <div class="header-container">
             <a href="#" class="logo">
                 <i class="fas fa-book-open"></i>
-                Readify
+                MaBook
             </a>
             
             <nav>
@@ -569,7 +569,7 @@
         <!-- Hero Section -->
         <section id="home" class="hero">
             <div class="hero-content">
-                <h1>Readify</h1>
+                <h1>MaBook</h1>
                 <p>Perpustakaan digital Dark Academia yang menghadirkan koleksi literatur klasik dan kontemporer terbaik. Temukan dunia pengetahuan, fiksi spekulatif, puisi abadi, dan karya-karya pemikiran mendalam dalam genggaman Anda.</p>
                 <a href="#collections" class="cta-button">Jelajahi Koleksi</a>
             </div>
@@ -585,7 +585,7 @@
 
         <!-- Features Section -->
         <section class="features-section">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem; color: var(--accent-2);">Mengapa Memilih Readify?</h2>
+            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem; color: var(--accent-2);">Mengapa Memilih MaBook?</h2>
             <div class="features">
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -642,7 +642,7 @@
     <footer>
         <div class="footer-container">
             <div class="footer-column">
-                <h3>Tentang Readify</h3>
+                <h3>Tentang MaBook</h3>
                 <ul>
                     <li><a href="#">Visi & Misi</a></li>
                     <li><a href="#">Tim Kami</a></li>
@@ -679,12 +679,12 @@
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-pinterest-p"></i></a>
                 </div>
-                <p style="margin-top: 1rem; color: var(--accent-2);">newsletter@readify.com</p>
+                <p style="margin-top: 1rem; color: var(--accent-2);">newsletter@MaBook.com</p>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2025 Readify. All rights reserved.</p>
+            <p>&copy; 2025 MaBook. All rights reserved.</p>
         </div>
     </footer>
 

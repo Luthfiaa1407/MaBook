@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Readify | Perpustakaan Digital Dark Academia</title>
+    <title>Edit Profil | Readify</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -205,167 +205,222 @@
             padding: 0 2rem;
         }
 
-        .hero {
-            background: linear-gradient(rgba(28, 18, 11, 0.7), rgba(28, 18, 11, 0.7)), 
-                        url('https://images.unsplash.com/photo-1505771215590-c5fa0aec29b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 500px;
+        .edit-profile-container {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            border-radius: 8px;
-            margin-bottom: 3rem;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(184, 92, 56, 0.1) 0%, rgba(184, 92, 56, 0) 50%, rgba(184, 92, 56, 0.1) 100%);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent-2);
-            font-family: 'UnifrakturMaguntia', cursive;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            letter-spacing: 2px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: var(--accent-1);
-            color: var(--text-light);
-            padding: 0.8rem 2rem;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: bold;
-            transition: all 0.3s;
-            border: 1px solid var(--accent-1);
-        }
-
-        .cta-button:hover {
-            background-color: transparent;
-            color: var(--accent-1);
-            transform: translateY(-3px);
-        }
-
-        /* Quote Section */
-        .quote-section {
-            background: linear-gradient(rgba(28, 18, 11, 0.8), rgba(28, 18, 11, 0.8)), 
-                        url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            padding: 100px 0;
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .quote-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-        }
-
-        .quote-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .quote-text {
-            font-size: 1.8rem;
-            font-style: italic;
-            color: var(--accent-2);
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .quote-author {
-            font-size: 1.2rem;
-            color: var(--accent-1);
-            font-weight: bold;
-        }
-
-        /* Features Section */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
         }
 
-        .feature-card {
+        .profile-sidebar {
+            width: 300px;
             background-color: var(--dark-2);
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             border: 1px solid var(--dark-3);
-            transition: transform 0.3s;
+            align-self: flex-start;
+            position: sticky;
+            top: 100px;
+        }
+
+        .profile-avatar-edit {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-image: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            border: 5px solid var(--accent-1);
+            margin: 0 auto 1.5rem;
             position: relative;
+            cursor: pointer;
             overflow: hidden;
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .feature-card::before {
-            content: '';
+        .profile-avatar-edit::after {
+            content: '\f030';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: var(--accent-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .profile-avatar-edit:hover::after {
+            opacity: 1;
+        }
+
+        .profile-avatar-edit input {
+            display: none;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 0.8rem;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            padding: 0.8rem 1rem;
+            color: var(--accent-2);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background-color: var(--dark-3);
+            color: var(--accent-1);
+        }
+
+        .sidebar-menu a i {
+            width: 25px;
+            text-align: center;
+            margin-right: 10px;
+        }
+
+        .edit-profile-content {
+            flex: 1;
+            background-color: var(--dark-2);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--dark-3);
+        }
+
+        .section-title {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: 2rem;
+            color: var(--accent-2);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50%;
+            height: 2px;
             background-color: var(--accent-1);
         }
 
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--accent-1);
+        .form-group {
             margin-bottom: 1.5rem;
         }
 
-        .feature-title {
-            font-size: 1.5rem;
+        .form-group label {
+            display: block;
             color: var(--accent-2);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
 
-        .feature-desc {
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background-color: var(--dark-3);
+            border: 1px solid var(--dark-3);
             color: var(--accent-2);
-            opacity: 0.9;
+            font-family: inherit;
+            font-size: 1rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-1);
+            box-shadow: 0 0 0 2px rgba(184, 92, 56, 0.3);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--accent-1);
+            color: var(--text-light);
+            border: none;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #9c4b2a;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--accent-2);
+            color: var(--accent-2);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(224, 192, 151, 0.1);
+            color: var(--accent-1);
+            border-color: var(--accent-1);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .preference-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background-color: var(--dark-3);
+            color: var(--accent-2);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tag:hover, .tag.active {
+            background-color: var(--accent-1);
+            color: var(--text-light);
         }
 
         /* Footer */
@@ -453,7 +508,7 @@
             font-size: 0.9rem;
         }
 
-
+        /* Responsive */
         @media (max-width: 992px) {
             .header-container {
                 flex-wrap: wrap;
@@ -492,37 +547,21 @@
             .user-profile {
                 margin-left: auto;
             }
+
+            .edit-profile-container {
+                flex-direction: column;
+            }
+
+            .profile-sidebar {
+                width: 100%;
+                position: static;
+            }
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .quote-text {
-                font-size: 1.5rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero {
-                height: 400px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .quote-text {
-                font-size: 1.2rem;
-            }
-
-            .quote-author {
-                font-size: 1rem;
+            .form-row {
+                flex-direction: column;
+                gap: 0;
             }
         }
     </style>
@@ -532,18 +571,18 @@
     <!-- Header -->
     <header>
         <div class="header-container">
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <i class="fas fa-book-open"></i>
                 Readify
             </a>
             
             <nav>
                 <ul>
-                    <li><a href="#home">Beranda</a></li>
-                    <li><a href="#collections">Koleksi</a></li>
-                    <li><a href="#categories">Kategori</a></li>
-                    <li><a href="#favorites">Favoritku</a></li>
-                    <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="library.html">Koleksi</a></li>
+                    <li><a href="categories.html">Kategori</a></li>
+                    <li><a href="favorites.html">Favoritku</a></li>
+                    <li><a href="about.html">Tentang Kami</a></li>
                 </ul>
             </nav>
             
@@ -555,10 +594,10 @@
             <div class="user-profile" id="profileToggle">
                 <div class="profile-pic"></div>
                 <div class="profile-dropdown" id="profileDropdown">
-                    <a href="profile.php"><i class="fas fa-user"></i> Profil Saya</a>
-                    <a href="#library"><i class="fas fa-book"></i> Perpustakaan</a>
-                    <a href="#settings"><i class="fas fa-cog"></i> Pengaturan</a>
-                    <a href="#logout"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+                    <a href="profile.html"><i class="fas fa-user"></i> Profil Saya</a>
+                    <a href="library.html"><i class="fas fa-book"></i> Perpustakaan</a>
+                    <a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a>
+                    <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
                 </div>
             </div>
         </div>
@@ -566,76 +605,86 @@
 
     <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>Readify</h1>
-                <p>Perpustakaan digital Dark Academia yang menghadirkan koleksi literatur klasik dan kontemporer terbaik. Temukan dunia pengetahuan, fiksi spekulatif, puisi abadi, dan karya-karya pemikiran mendalam dalam genggaman Anda.</p>
-                <a href="#collections" class="cta-button">Jelajahi Koleksi</a>
+        <div class="edit-profile-container">
+            <!-- Sidebar -->
+            <div class="profile-sidebar">
+                <div class="profile-avatar-edit" id="avatarUpload">
+                    <input type="file" id="avatarInput" accept="image/*">
+                </div>
+                
+                <ul class="sidebar-menu">
+                    <li><a href="profile.html" class="active"><i class="fas fa-user-circle"></i> Profil Saya</a></li>
+                    <li><a href="profile-account.html"><i class="fas fa-user-cog"></i> Pengaturan Akun</a></li>
+                    <li><a href="profile-privacy.html"><i class="fas fa-lock"></i> Privasi & Keamanan</a></li>
+                    <li><a href="profile-notifications.html"><i class="fas fa-bell"></i> Notifikasi</a></li>
+                    <li><a href="profile-reading.html"><i class="fas fa-book-reader"></i> Preferensi Membaca</a></li>
+                </ul>
             </div>
-        </section>
-
-        <!-- Quote Section -->
-        <section class="quote-section">
-            <div class="quote-content">
-                <p class="quote-text">"Reading is essential for those who seek to rise above the ordinary."</p>
-                <p class="quote-author">— Jim Rohn</p>
+            
+            <!-- Edit Profile Content -->
+            <div class="edit-profile-content">
+                <h1 class="section-title">Edit Profil</h1>
+                
+                <form id="editProfileForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">Nama Depan</label>
+                            <input type="text" id="firstName" class="form-control" value="Alexandra">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Nama Belakang</label>
+                            <input type="text" id="lastName" class="form-control" value="Windsor">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" class="form-control" value="alex_windsor">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bio">Bio</label>
+                        <textarea id="bio" class="form-control">Kolektor buku tua dan pencinta literatur klasik. Membaca adalah jendela dunia dan jiwa.</textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location">Lokasi</label>
+                        <input type="text" id="location" class="form-control" value="Oxford, Inggris">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Genre Favorit</label>
+                        <div class="preference-tags">
+                            <span class="tag active">Gothic</span>
+                            <span class="tag active">Klasik</span>
+                            <span class="tag">Filosofi</span>
+                            <span class="tag">Puisi</span>
+                            <span class="tag">Sejarah</span>
+                            <span class="tag">Misteri</span>
+                            <span class="tag">Fantasi Gelap</span>
+                            <span class="tag">Psikologi</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Penulis Favorit</label>
+                        <div class="preference-tags">
+                            <span class="tag active">Edgar Allan Poe</span>
+                            <span class="tag active">Oscar Wilde</span>
+                            <span class="tag active">Mary Shelley</span>
+                            <span class="tag">Fyodor Dostoevsky</span>
+                            <span class="tag">Virginia Woolf</span>
+                            <span class="tag">H.P. Lovecraft</span>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <button type="submit" class="btn">Simpan Perubahan</button>
+                        <a href="profile.html" class="btn btn-outline">Batal</a>
+                    </div>
+                </form>
             </div>
-        </section>
-
-        <!-- Features Section -->
-        <section class="features-section">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem; color: var(--accent-2);">Mengapa Memilih Readify?</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h3 class="feature-title">Koleksi Eksklusif</h3>
-                    <p class="feature-desc">Ribuan buku digital dari berbagai genre, termasuk literatur klasik, filosofi, sejarah, dan fiksi spekulatif.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-moon"></i>
-                    </div>
-                    <h3 class="feature-title">Mode Baca Nyaman</h3>
-                    <p class="feature-desc">Mode malam dan penyesuaian font untuk pengalaman membaca yang lebih nyaman di segala kondisi.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bookmark"></i>
-                    </div>
-                    <h3 class="feature-title">Book Tracker</h3>
-                    <p class="feature-desc">Lacak buku yang sedang dan akan dibaca dengan sistem yang terorganisir dan personal.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-pen-fancy"></i>
-                    </div>
-                    <h3 class="feature-title">Catatan Pribadi</h3>
-                    <p class="feature-desc">Tambahkan highlight dan catatan pribadi di setiap halaman buku yang Anda baca.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-fire"></i>
-                    </div>
-                    <h3 class="feature-title">Reading Streak</h3>
-                    <p class="feature-desc">Pertahankan kebiasaan membaca dengan sistem streak harian yang memotivasi.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headphones"></i>
-                    </div>
-                    <h3 class="feature-title">AudioBook</h3>
-                    <p class="feature-desc">Nikmati koleksi audio book untuk pengalaman mendengarkan yang imersif (coming soon).</p>
-                </div>
-            </div>
-        </section>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -708,15 +757,41 @@
             e.stopPropagation();
         });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+        // Avatar Upload
+        const avatarUpload = document.getElementById('avatarUpload');
+        const avatarInput = document.getElementById('avatarInput');
+
+        avatarUpload.addEventListener('click', function() {
+            avatarInput.click();
+        });
+
+        avatarInput.addEventListener('change', function(e) {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
                 
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                reader.onload = function(event) {
+                    avatarUpload.style.backgroundImage = `url(${event.target.result})`;
+                }
+                
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+
+        // Tag Selection
+        const tags = document.querySelectorAll('.tag');
+        
+        tags.forEach(tag => {
+            tag.addEventListener('click', function() {
+                this.classList.toggle('active');
             });
+        });
+
+        // Form Submission
+        const editProfileForm = document.getElementById('editProfileForm');
+        
+        editProfileForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Profil berhasil diperbarui!');
         });
     </script>
 </body>

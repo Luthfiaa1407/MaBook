@@ -691,7 +691,7 @@
                     </div>
                 </div>
                 
-                <a href="#" class="edit-profile-btn"><i class="fas fa-edit"></i> Edit Profil</a>
+                <a href="editprofile.php" class="edit-profile-btn"><i class="fas fa-edit"></i> Edit Profil</a>
             </div>
         </section>
 

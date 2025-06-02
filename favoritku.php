@@ -23,6 +23,10 @@
       --text-light: #f5f5dc;
     }
   </style>
+</head>
+<body>
+
+  <!-- Header -->
   <header>
         <div class="header-container">
             <a href="index.html" class="logo">

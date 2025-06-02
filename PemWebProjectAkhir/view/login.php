@@ -1,8 +1,9 @@
-<?php include "../database/db.php"; ?> 
-<?php
+<?php 
+session_start(); 
+include "../database/db.php"; 
+
 $pesan = isset($_GET['pesan']) ? $_GET['pesan'] : '';
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>

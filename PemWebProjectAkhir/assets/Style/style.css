@@ -1,0 +1,215 @@
+/* style.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  flex-direction: row-reverse;
+}
+
+/* Responsive fix biar tetap bagus di mobile */
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left-side {
+    order: 2;
+  }
+
+  .right-side {
+    order: 1;
+  }
+}
+
+.right-side {
+  flex: 1;
+  background: url('../BackgroundJeruk.png') no-repeat center center;
+  background-size: cover;
+}
+
+.left-side {
+  flex: 1;
+  background: linear-gradient(to bottom right, #ffd6e8, #2f4b7c); /* warna diubah: gradasi merah muda ke biru royal */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-box {
+  width: 80%;
+  max-width: 400px;
+}
+
+.form-box h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 26px;
+  color: #d63384; /* warna diubah: judul brand pink tua */
+}
+
+.form-box h2 span.brand-bold {
+  font-weight: bold;
+  color: #2f4b7c; /* warna diubah: brand bold biru royal */
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+/* Styling khusus untuk halaman daftar */
+body.daftar-page .form-box {
+  background: linear-gradient(to bottom, #ffffff, #ffe0f0); /* warna diubah: putih ke pink muda */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 63, 92, 0.2);
+  border: 2px solid #ffa2c0; /* warna diubah: pink pastel */
+  position: relative;
+  z-index: 2;
+}
+
+/* Input style */
+body.daftar-page input[type="text"],
+body.daftar-page input[type="email"],
+body.daftar-page input[type="password"] {
+  border: 1.8px solid #ff85b3; /* warna diubah: garis input pink cerah */
+  background-color: #fff0f5;   /* warna diubah: latar input pink pucat */
+}
+
+/* Tombol daftar */
+body.daftar-page button {
+  background-color: #2f4b7c; /* warna diubah: biru royal */
+}
+
+body.daftar-page button:hover {
+  background-color: #7d99d4; /* warna diubah: biru royal terang */
+}
+
+/* Styling khusus untuk halaman login */
+body.login-page .form-box {
+  background: linear-gradient(to bottom, #ffe5f2, #fff); /* warna diubah: pink muda ke putih */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border: 2px solid #d25aa8; /* warna diubah: pink keunguan */
+  position: relative;
+  z-index: 2;
+}
+
+body.login-page input[type="email"],
+body.login-page input[type="password"] {
+  border: 1.8px solid #e066aa; /* warna diubah: pink soft */
+  background-color: #fff0f5;  /* warna diubah: pink pucat */
+}
+
+body.login-page button {
+  background-color: #2f4b7c; /* warna diubah: biru royal */
+}
+
+body.login-page button:hover {
+  background-color: #6172b0; /* warna diubah: biru royal terang */
+}
+
+/* Input umum */
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: border 0.3s ease;
+}
+
+input:focus {
+  border-color: #ff7eb9; /* warna diubah: pink saat fokus */
+  outline: none;
+}
+
+.alert {
+  background-color: #ffe6f0; /* warna diubah: latar alert pink lembut */
+  color: #d63384;            /* warna diubah: teks alert pink tua */
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.form-box {
+  width: 80%;
+  max-width: 400px;
+  padding: 30px;
+  border-radius: 12px;
+  background: linear-gradient(to bottom, #fffdf9, #ffe0ec); /* warna diubah: putih ke pink */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-box:hover {
+  transform: translateY(-7px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(230, 126, 174, 0.4); /* warna diubah: pink shadow */
+}
+
+/* Tombol umum */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #d63384; /* warna diubah: tombol pink tua */
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #7c3a89; /* warna diubah: hover ungu pink tua */
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.login-link a {
+  color: #2f4b7c; /* warna diubah: link biru royal */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left-side {
+    height: 200px;
+  }
+
+  .right-side {
+    flex: none;
+    padding: 30px;
+  }
+}

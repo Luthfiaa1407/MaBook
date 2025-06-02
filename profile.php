@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Saya | Readify</title>
+    <title>Profil Saya | MaBook</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -636,7 +636,7 @@
         <div class="header-container">
             <a href="index.html" class="logo">
                 <i class="fas fa-book-open"></i>
-                Readify
+                MaBooK
             </a>
             
             <nav>
@@ -645,7 +645,7 @@
                     <li><a href="library.html">Koleksi</a></li>
                     <li><a href="categories.html">Kategori</a></li>
                     <li><a href="favorites.html">Favoritku</a></li>
-                    <li><a href="about.html">Tentang Kami</a></li>
+                    <li><a href="aboutUs.php">Tentang Kami</a></li>
                 </ul>
             </nav>
             
@@ -922,7 +922,7 @@
     <footer>
         <div class="footer-container">
             <div class="footer-column">
-                <h3>Tentang Readify</h3>
+                <h3>Tentang MaBook</h3>
                 <ul>
                     <li><a href="#">Visi & Misi</a></li>
                     <li><a href="#">Tim Kami</a></li>

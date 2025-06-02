@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Readify | Perpustakaan Digital Dark Academia</title>
+    <title>Tentang Kami | Readify - Perpustakaan Digital Dark Academia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -68,45 +68,6 @@
         .logo i {
             margin-right: 10px;
             color: var(--accent-1);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            align-items: center;
-        }
-
-        nav ul li {
-            margin-left: 1.5rem;
-            position: relative;
-        }
-
-        nav ul li a {
-            color: var(--accent-2);
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-            position: relative;
-            padding-bottom: 5px;
-        }
-
-        nav ul li a:hover {
-            color: var(--accent-1);
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background-color: var(--accent-1);
-            transition: width 0.3s;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
         }
 
         .user-profile {
@@ -198,49 +159,79 @@
             background-color: #9c4b2a;
         }
 
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--accent-2);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-1);
+        }
+
+        nav ul li a.active {
+            color: var(--accent-1);
+            font-weight: bold;
+        }
+
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-1);
+        }
+
         /* Main Content */
         main {
             max-width: 1200px;
-            margin: 2rem auto;
+            margin: 3rem auto;
             padding: 0 2rem;
         }
 
-        .hero {
-            background: linear-gradient(rgba(28, 18, 11, 0.7), rgba(28, 18, 11, 0.7)), 
-                        url('https://images.unsplash.com/photo-1505771215590-c5fa0aec29b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+        /* About Hero Section */
+        .about-hero {
+            background: linear-gradient(rgba(28, 18, 11, 0.8), rgba(28, 18, 11, 0.8)), 
+                        url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
-            height: 500px;
+            height: 400px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             border-radius: 8px;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             position: relative;
             overflow: hidden;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(184, 92, 56, 0.1) 0%, rgba(184, 92, 56, 0) 50%, rgba(184, 92, 56, 0.1) 100%);
-        }
-
-        .hero-content {
+        .about-hero-content {
             max-width: 800px;
             padding: 2rem;
             position: relative;
             z-index: 1;
         }
 
-        .hero h1 {
+        .about-hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
             color: var(--accent-2);
@@ -249,99 +240,151 @@
             letter-spacing: 2px;
         }
 
-        .hero p {
+        .about-hero p {
             font-size: 1.2rem;
-            margin-bottom: 2rem;
             line-height: 1.8;
         }
 
-        .cta-button {
-            display: inline-block;
-            background-color: var(--accent-1);
-            color: var(--text-light);
-            padding: 0.8rem 2rem;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: bold;
-            transition: all 0.3s;
-            border: 1px solid var(--accent-1);
-        }
-
-        .cta-button:hover {
-            background-color: transparent;
-            color: var(--accent-1);
-            transform: translateY(-3px);
-        }
-
-        /* Quote Section */
-        .quote-section {
-            background: linear-gradient(rgba(28, 18, 11, 0.8), rgba(28, 18, 11, 0.8)), 
-                        url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            padding: 100px 0;
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .quote-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-        }
-
-        .quote-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .quote-text {
-            font-size: 1.8rem;
-            font-style: italic;
-            color: var(--accent-2);
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .quote-author {
-            font-size: 1.2rem;
-            color: var(--accent-1);
-            font-weight: bold;
-        }
-
-        /* Features Section */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .feature-card {
+        /* About Content Sections */
+        .about-section {
             background-color: var(--dark-2);
-            padding: 2rem;
+            padding: 4rem;
             border-radius: 8px;
+            margin-bottom: 4rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             border: 1px solid var(--dark-3);
-            transition: transform 0.3s;
             position: relative;
             overflow: hidden;
         }
 
-        .feature-card:hover {
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background-image: url('https://www.transparenttextures.com/patterns/black-paper.png');
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .section-title {
+            font-family: 'UnifrakturMaguntia', cursive;
+            color: var(--accent-2);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background-color: var(--accent-1);
+        }
+
+        .about-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: var(--accent-2);
+            font-size: 1.1rem;
+        }
+
+        /* Mission & Vision */
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .mission-card, .vision-card {
+            background-color: var(--dark-3);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 5px solid var(--accent-1);
+            transition: transform 0.3s;
+        }
+
+        .mission-card:hover, .vision-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .mission-card h3, .vision-card h3 {
+            color: var(--accent-1);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        /* Values Section */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .value-card {
+            background-color: var(--dark-3);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
+            border-bottom: 3px solid var(--accent-1);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--accent-1);
+            margin-bottom: 1.5rem;
+        }
+
+        .value-title {
+            color: var(--accent-2);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background-color: var(--dark-3);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid var(--dark-3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member:hover {
             transform: translateY(-10px);
         }
 
-        .feature-card::before {
+        .team-member::before {
             content: '';
             position: absolute;
             top: 0;
@@ -351,21 +394,151 @@
             background-color: var(--accent-1);
         }
 
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--accent-1);
-            margin-bottom: 1.5rem;
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background-size: cover;
+            background-position: center;
+            border: 3px solid var(--accent-1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .feature-title {
-            font-size: 1.5rem;
+        .member-name {
             color: var(--accent-2);
-            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
         }
 
-        .feature-desc {
+        .member-position {
+            color: var(--accent-1);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        .member-bio {
+            color: var(--accent-2);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .member-social a {
+            color: var(--accent-2);
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .member-social a:hover {
+            color: var(--accent-1);
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 4rem auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--accent-1);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-2);
+            border: 3px solid var(--accent-1);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::after {
+            right: -10px;
+        }
+
+        .right::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--dark-3);
+            border-radius: 8px;
+            border-left: 3px solid var(--accent-1);
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            top: 20px;
+        }
+
+        .left .timeline-content::before {
+            border-right: 10px solid var(--dark-3);
+            right: -10px;
+        }
+
+        .right .timeline-content::before {
+            border-left: 10px solid var(--dark-3);
+            left: -10px;
+        }
+
+        .timeline-date {
+            color: var(--accent-1);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            color: var(--accent-2);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .timeline-desc {
             color: var(--accent-2);
             opacity: 0.9;
+            font-size: 0.95rem;
         }
 
         /* Footer */
@@ -453,7 +626,7 @@
             font-size: 0.9rem;
         }
 
-
+        /* Responsive Design */
         @media (max-width: 992px) {
             .header-container {
                 flex-wrap: wrap;
@@ -478,58 +651,66 @@
             nav ul li {
                 margin: 0.5rem;
             }
-
-            .search-bar {
-                order: 2;
-                margin: 1rem auto 0;
-                width: 100%;
-            }
-
-            .search-bar input {
-                width: 100%;
-            }
-
-            .user-profile {
-                margin-left: auto;
-            }
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
+            .about-hero h1 {
                 font-size: 2.5rem;
             }
 
-            .quote-text {
-                font-size: 1.5rem;
+            .about-section {
+                padding: 3rem 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .left::after, .right::after {
+                left: 21px;
+            }
+            
+            .right {
+                left: 0%;
             }
         }
 
         @media (max-width: 576px) {
-            .hero {
-                height: 400px;
+            .about-hero {
+                height: 350px;
             }
 
-            .hero h1 {
+            .about-hero h1 {
                 font-size: 2rem;
             }
 
-            .hero p {
+            .about-hero p {
                 font-size: 1rem;
             }
 
-            .quote-text {
-                font-size: 1.2rem;
-            }
-
-            .quote-author {
-                font-size: 1rem;
+            .mission-vision {
+                grid-template-columns: 1fr;
             }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
+  
     <header>
         <div class="header-container">
             <a href="#" class="logo">
@@ -563,80 +744,86 @@
             </div>
         </div>
     </header>
-
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>Readify</h1>
-                <p>Perpustakaan digital Dark Academia yang menghadirkan koleksi literatur klasik dan kontemporer terbaik. Temukan dunia pengetahuan, fiksi spekulatif, puisi abadi, dan karya-karya pemikiran mendalam dalam genggaman Anda.</p>
-                <a href="#collections" class="cta-button">Jelajahi Koleksi</a>
+        <!-- About Section -->
+        <section class="about-section">
+            <div class="about-content">
+                <h2 class="section-title">Kisah Kami</h2>
+                <p>MaBook terbentuk pada tahun 2025 dari obrolan mengenai tugas akhir pemrograman web. Sekelompok mahasiswa ilmu komputer yang frustasi dengan web apa yang dibutuhkan oleh banyak orang terkhusus dengan para pembaca buku dark akademia</p>
+                
+                <p></p>
+                
+                <div class="mission-vision">
+                    <div class="mission-card">
+                        <h3>Misi Kami</h3>
+                        <p>Menyediakan akses terhadap literatur berkualitas dari berbagai zaman dan budaya, memelihara api kecintaan akan membaca, serta menciptakan komunitas pembaca yang kritis dan reflektif.</p>
+                    </div>
+                    
+                    <div class="vision-card">
+                        <h3>Visi Kami</h3>
+                        <p>Menjadi perpustakaan digital Dark Academia terkemuka yang tidak hanya menyimpan buku, tetapi juga merawat tradisi intelektual dan mendorong dialog antar generasi melalui karya-karya abadi.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Quote Section -->
-        <section class="quote-section">
-            <div class="quote-content">
-                <p class="quote-text">"Reading is essential for those who seek to rise above the ordinary."</p>
-                <p class="quote-author">— Jim Rohn</p>
-            </div>
-        </section>
 
-        <!-- Features Section -->
-        <section class="features-section">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 2rem; color: var(--accent-2);">Mengapa Memilih Readify?</h2>
-            <div class="features">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <h3 class="feature-title">Koleksi Eksklusif</h3>
-                    <p class="feature-desc">Ribuan buku digital dari berbagai genre, termasuk literatur klasik, filosofi, sejarah, dan fiksi spekulatif.</p>
-                </div>
+        <!-- Team Section -->
+        <section class="about-section">
+            <div class="about-content">
+                <h2 class="section-title">Tim Inti</h2>
+                <p>Di balik MaBook berdiri tim multidisiplin yang dipersatukan oleh kecintaan pada buku dan komitmen terhadap literasi digital.</p>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-moon"></i>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-photo" style="background-image: url('https://i.pinimg.com/474x/2a/e6/32/2ae6321201346ff5837c810f05e4e0e2.jpg');"></div>
+                        <h4 class="member-name">Arjuna Gunatama </h4>
+                        <span class="member-position"></span>
+                        <p class="member-bio"></p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
                     </div>
-                    <h3 class="feature-title">Mode Baca Nyaman</h3>
-                    <p class="feature-desc">Mode malam dan penyesuaian font untuk pengalaman membaca yang lebih nyaman di segala kondisi.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bookmark"></i>
+                    
+                    <div class="team-member">
+                        <div class="member-photo" style="background-image: url('https://i.pinimg.com/474x/29/b3/92/29b3926c930f388a53ce2658cf8ffbef.jpg');"></div>
+                        <h4 class="member-name">Clara Monica</h4>
+                        <span class="member-position"></span>
+                        <p class="member-bio"></p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
                     </div>
-                    <h3 class="feature-title">Book Tracker</h3>
-                    <p class="feature-desc">Lacak buku yang sedang dan akan dibaca dengan sistem yang terorganisir dan personal.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-pen-fancy"></i>
+                    
+                    <div class="team-member">
+                        <div class="member-photo" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1kjyqWRZ2Te7F-utbrEDpIsLqFm1p75RvpA&s');"></div>
+                        <h4 class="member-name">Luthfia Rahma</h4>
+                        <span class="member-position"></span>
+                        <p class="member-bio"></p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
                     </div>
-                    <h3 class="feature-title">Catatan Pribadi</h3>
-                    <p class="feature-desc">Tambahkan highlight dan catatan pribadi di setiap halaman buku yang Anda baca.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-fire"></i>
+                    
+                    <div class="team-member">
+                        <div class="member-photo" style="background-image: url('http://giantbomb.com/a/uploads/scale_medium/13/135472/3031425-1800398542-latest');"></div>
+                        <h4 class="member-name">Sheva Lukiyanto</h4>
+                        <span class="member-position"></span>
+                        <p class="member-bio"></p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
                     </div>
-                    <h3 class="feature-title">Reading Streak</h3>
-                    <p class="feature-desc">Pertahankan kebiasaan membaca dengan sistem streak harian yang memotivasi.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headphones"></i>
-                    </div>
-                    <h3 class="feature-title">AudioBook</h3>
-                    <p class="feature-desc">Nikmati koleksi audio book untuk pengalaman mendengarkan yang imersif (coming soon).</p>
                 </div>
             </div>
         </section>
-    </main>
 
     <!-- Footer -->
     <footer>
@@ -689,7 +876,6 @@
     </footer>
 
     <script>
-        // Profile Dropdown Toggle
         const profileToggle = document.getElementById('profileToggle');
         const profileDropdown = document.getElementById('profileDropdown');
 
@@ -698,25 +884,12 @@
             profileDropdown.classList.toggle('active');
         });
 
-        // Close dropdown when clicking outside
         document.addEventListener('click', function() {
             profileDropdown.classList.remove('active');
         });
 
-        // Prevent dropdown from closing when clicking inside it
         profileDropdown.addEventListener('click', function(e) {
             e.stopPropagation();
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
         });
     </script>
 </body>

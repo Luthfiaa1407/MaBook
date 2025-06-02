@@ -1,3 +1,7 @@
+<?php
+session_start();
+$loggedIn = isset($_SESSION['nama']);
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -25,6 +29,15 @@
   </style>
 </head>
 <body>
+    <?php if (!$loggedIn): ?>
+    <div class="locked-overlay">
+        <div class="locked-message">
+            <h2>🔒 Akses Dibatasi</h2>
+            <p>Silakan login terlebih dahulu untuk mengakses fitur ini.</p>
+            <a href="PemWebProjectAkhir/view/login.php" class="btn-login-overlay">Login Sekarang</a>
+        </div>
+    </div>
+<?php endif; ?>
 
   <!-- Header -->
   <header>
@@ -40,7 +53,7 @@
                     <li><a href="library.html">Koleksi</a></li>
                     <li><a href="categories.html">Kategori</a></li>
                     <li><a href="favorites.html">Favoritku</a></li>
-                    <li><a href="about.html">Tentang Kami</a></li>
+                    <li><a href="aboutUs.php">Tentang Kami</a></li>
                 </ul>
             </nav>
             

@@ -1,9 +1,16 @@
+<?php
+session_start();
+$logoutNotif = isset($_GET['logout']) ? true : false;
+?>
+
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Saya | MaBook</title>
+    <title>MABOOK | Perpustakaan Digital Dark Academia</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -20,631 +27,31 @@
             --olive: #6B8E23; /* Olive Green */
             --burgundy: #800020; /* Burgundy */
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Crimson Text', 'Times New Roman', serif;
-            background-color: var(--dark-1);
-            color: var(--text-light);
-            line-height: 1.6;
-            background-image: url('https://www.transparenttextures.com/patterns/black-paper.png');
-        }
-
-        /* Header Styles */
-        header {
-            background: linear-gradient(to right, var(--dark-2), var(--dark-3));
-            padding: 0.5rem 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--accent-1);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-family: 'UnifrakturMaguntia', cursive;
-            font-size: 2.5rem;
-            color: var(--accent-2);
-            text-decoration: none;
-            letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo i {
-            margin-right: 10px;
-            color: var(--accent-1);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            align-items: center;
-        }
-
-        nav ul li {
-            margin-left: 1.5rem;
-            position: relative;
-        }
-
-        nav ul li a {
-            color: var(--accent-2);
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-            position: relative;
-            padding-bottom: 5px;
-        }
-
-        nav ul li a:hover {
-            color: var(--accent-1);
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background-color: var(--accent-1);
-            transition: width 0.3s;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        .user-profile {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .profile-pic {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--accent-2);
-            background-image: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            border: 2px solid var(--accent-1);
-            margin-left: 1rem;
-        }
-
-        .profile-dropdown {
-            position: absolute;
-            top: 60px;
-            right: 0;
-            background-color: var(--dark-2);
-            border: 1px solid var(--dark-3);
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            width: 200px;
-            display: none;
-            z-index: 10;
-        }
-
-        .profile-dropdown.active {
-            display: block;
-        }
-
-        .profile-dropdown a {
-            display: block;
-            padding: 0.8rem 1rem;
-            color: var(--accent-2);
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .profile-dropdown a:hover {
-            background-color: var(--dark-3);
-            color: var(--accent-1);
-        }
-
-        .profile-dropdown a i {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-
-        .search-bar {
-            display: flex;
-            margin-left: 2rem;
-        }
-
-        .search-bar input {
-            background-color: var(--dark-1);
-            border: 1px solid var(--dark-3);
-            padding: 0.5rem 1rem;
-            color: var(--text-light);
-            font-family: inherit;
-            width: 250px;
-            transition: all 0.3s;
-        }
-
-        .search-bar input:focus {
-            outline: none;
-            border-color: var(--accent-1);
-            box-shadow: 0 0 0 2px rgba(184, 92, 56, 0.3);
-        }
-
-        .search-bar button {
-            background-color: var(--accent-1);
-            color: var(--text-light);
-            border: none;
-            padding: 0 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .search-bar button:hover {
-            background-color: #9c4b2a;
-        }
-
-        /* Main Content */
-        main {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-        }
-
-        /* Profile Header */
-        .profile-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 3rem;
-            background-color: var(--dark-2);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--dark-3);
-        }
-
-        .profile-avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background-image: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            border: 5px solid var(--accent-1);
-            margin-right: 2rem;
-            position: relative;
-        }
-
-        .profile-avatar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(184, 92, 56, 0.2), rgba(184, 92, 56, 0));
-        }
-
-        .profile-info h1 {
-            font-size: 2.5rem;
-            color: var(--accent-2);
-            margin-bottom: 0.5rem;
-            font-family: 'UnifrakturMaguntia', cursive;
-        }
-
-        .profile-info p {
-            color: var(--accent-1);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .profile-stats {
-            display: flex;
-            gap: 2rem;
-            margin-top: 1.5rem;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 1.8rem;
-            color: var(--accent-1);
-            font-weight: bold;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--accent-2);
-            opacity: 0.8;
-        }
-
-        .edit-profile-btn {
-            display: inline-block;
-            background-color: transparent;
-            color: var(--accent-2);
-            padding: 0.5rem 1.5rem;
-            text-decoration: none;
-            border-radius: 4px;
-            border: 1px solid var(--accent-2);
-            font-size: 0.9rem;
-            transition: all 0.3s;
-            margin-top: 1rem;
-        }
-
-        .edit-profile-btn:hover {
-            background-color: rgba(224, 192, 151, 0.1);
-            color: var(--accent-1);
-            border-color: var(--accent-1);
-        }
-
-        /* Profile Tabs */
-        .profile-tabs {
-            display: flex;
-            border-bottom: 1px solid var(--dark-3);
-            margin-bottom: 2rem;
-        }
-
-        .tab-btn {
-            padding: 0.8rem 1.5rem;
-            background: none;
-            border: none;
-            color: var(--accent-2);
-            font-family: inherit;
-            font-size: 1rem;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.3s;
-        }
-
-        .tab-btn.active {
-            color: var(--accent-1);
-        }
-
-        .tab-btn.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: var(--accent-1);
-        }
-
-        .tab-btn:hover:not(.active) {
-            background-color: rgba(224, 192, 151, 0.05);
-        }
-
-        /* Tab Content */
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* My Library Section */
-        .bookshelf {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .book-card {
-            background-color: var(--dark-2);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s;
-            border: 1px solid var(--dark-3);
-            position: relative;
-        }
-
-        .book-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .book-cover {
-            height: 250px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-
-        .book-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: var(--accent-1);
-            color: var(--text-light);
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        .book-details {
-            padding: 1rem;
-        }
-
-        .book-title {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent-2);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .book-author {
-            color: var(--accent-1);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .book-progress {
-            height: 4px;
-            background-color: var(--dark-3);
-            border-radius: 2px;
-            margin: 0.5rem 0;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background-color: var(--accent-1);
-            border-radius: 2px;
-        }
-
-        .progress-text {
-            font-size: 0.8rem;
-            color: var(--accent-2);
-            text-align: right;
-        }
-
-        /* Reading Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .stat-card {
-            background-color: var(--dark-2);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--dark-3);
-            position: relative;
-        }
-
-        .stat-card h3 {
-            color: var(--accent-2);
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .stat-card h3::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 50%;
-            height: 2px;
-            background-color: var(--accent-1);
-        }
-
-        .stat-value {
-            font-size: 2.5rem;
-            color: var(--accent-1);
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .stat-description {
-            color: var(--accent-2);
-            opacity: 0.9;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark-2);
-            padding: 3rem 0 1.5rem;
-            border-top: 1px solid var(--dark-3);
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-column h3 {
-            color: var(--accent-2);
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 50%;
-            height: 2px;
-            background-color: var(--accent-1);
-        }
-
-        .footer-column ul {
-            list-style: none;
-        }
-
-        .footer-column ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-column ul li a {
-            color: var(--accent-2);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-column ul li a:hover {
-            color: var(--accent-1);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: var(--dark-3);
-            color: var(--accent-2);
-            border-radius: 50%;
-            transition: all 0.3s;
-        }
-
-        .social-links a:hover {
-            background-color: var(--accent-1);
-            color: var(--text-light);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--dark-3);
-            color: var(--accent-2);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .header-container {
-                flex-wrap: wrap;
-                padding: 1rem;
-            }
-
-            .logo {
-                margin-bottom: 1rem;
-            }
-
-            nav {
-                order: 3;
-                width: 100%;
-                margin-top: 1rem;
-            }
-
-            nav ul {
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-
-            nav ul li {
-                margin: 0.5rem;
-            }
-
-            .search-bar {
-                order: 2;
-                margin: 1rem auto 0;
-                width: 100%;
-            }
-
-            .search-bar input {
-                width: 100%;
-            }
-
-            .user-profile {
-                margin-left: auto;
-            }
-
-            .profile-header {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .profile-avatar {
-                margin-right: 0;
-                margin-bottom: 1.5rem;
-            }
-
-            .profile-stats {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .profile-info h1 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .profile-avatar {
-                width: 120px;
-                height: 120px;
-            }
-
-            .profile-stats {
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-
-            .stat-item {
-                flex: 1 0 40%;
-            }
-        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 </head>
 <body>
+    <?php if ($logoutNotif): ?>
+    <div class="logout-alert">
+        Anda telah berhasil keluar dari akun. Sekarang dalam mode tamu.
+    </div>
+    <?php endif; ?>
     <!-- Header -->
     <header>
+        <div id="user-menu">
+        </div>
         <div class="header-container">
-            <a href="index.html" class="logo">
+            <a href="#" class="logo">
                 <i class="fas fa-book-open"></i>
-                MaBooK
+                MABOOK
             </a>
             
             <nav>
                 <ul>
-                    <li><a href="index.html">Beranda</a></li>
-                    <li><a href="library.html">Koleksi</a></li>
-                    <li><a href="categories.html">Kategori</a></li>
-                    <li><a href="favorites.html">Favoritku</a></li>
+                    <li><a href="dashboard.php">Beranda</a></li>
+                    <li><a href="disimpan.php">Koleksi</a></li>
+                    <li><a href="#categories">Kategori</a></li>
+                    <li><a href="favoritku.php">Favoritku</a></li>
                     <li><a href="aboutUs.php">Tentang Kami</a></li>
                 </ul>
             </nav>
@@ -655,13 +62,22 @@
             </div>
             
             <div class="user-profile" id="profileToggle">
-                <div class="profile-pic"></div>
-                <div class="profile-dropdown" id="profileDropdown">
-                    <a href="profile.html"><i class="fas fa-user"></i> Profil Saya</a>
-                    <a href="library.html"><i class="fas fa-book"></i> Perpustakaan</a>
-                    <a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a>
-                    <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
-                </div>
+<?php if (!empty($_SESSION['nama'])): ?>
+    <div class="user-profile" id="profileToggle">
+        <div class="profile-pic"></div>
+        <div class="profile-dropdown" id="profileDropdown">
+            <a href="profile.php"><i class="fas fa-user"></i> Profil Saya</a>
+            <a href="#library"><i class="fas fa-book"></i> Perpustakaan</a>
+            <a href="#settings"><i class="fas fa-cog"></i> Pengaturan</a>
+            <a href="#" onclick="confirmLogout(event)"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+        </div>
+    </div>
+<?php else: ?>
+    <div class="auth-buttons">
+        <a href="PemWebProjectAkhir/view/login.php" class="btn-login">Login</a>
+        <a href="PemWebProjectAkhir/view/daftar.php" class="btn-signup">Daftar</a>
+    </div>
+<?php endif; ?>
             </div>
         </div>
     </header>
@@ -922,7 +338,7 @@
     <footer>
         <div class="footer-container">
             <div class="footer-column">
-                <h3>Tentang MaBook</h3>
+                <h3>Tentang Readify</h3>
                 <ul>
                     <li><a href="#">Visi & Misi</a></li>
                     <li><a href="#">Tim Kami</a></li>

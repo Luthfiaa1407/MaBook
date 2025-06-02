@@ -23,15 +23,39 @@
       --text-light: #f5f5dc;
     }
   </style>
-</head>
-<body>
-
-  <!-- Header -->
   <header>
-    <div class="header-container">
-      <a href="#" class="logo"><i class="fas fa-book"></i> Buku Favorit</a>
-    </div>
-  </header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-book-open"></i>
+                MaBook
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="dashboard.php">Beranda</a></li>
+                    <li><a href="library.html">Koleksi</a></li>
+                    <li><a href="categories.html">Kategori</a></li>
+                    <li><a href="favorites.html">Favoritku</a></li>
+                    <li><a href="about.html">Tentang Kami</a></li>
+                </ul>
+            </nav>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Cari buku, penulis...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div class="user-profile" id="profileToggle">
+                <div class="profile-pic"></div>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="profile.html"><i class="fas fa-user"></i> Profil Saya</a>
+                    <a href="library.html"><i class="fas fa-book"></i> Perpustakaan</a>
+                    <a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a>
+                    <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+                </div>
+            </div>
+        </div>
+    </header>
 
   <!-- Hero Section -->
   <main>

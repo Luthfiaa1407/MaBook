@@ -16,7 +16,7 @@ if ($query->num_rows === 1) {
 
         echo "<script>
             alert('Login berhasil, selamat datang {$user['nama']}!');
-            window.location.href = '../view/marketplace.html';
+            window.location.href = '../../dashboard.php';
         </script>";
     } else {
         header("Location: ../view/login.php?pesan=gagal");
@@ -25,3 +25,4 @@ if ($query->num_rows === 1) {
     header("Location: ../view/login.php?pesan=gagal");
 }
 ?>
+

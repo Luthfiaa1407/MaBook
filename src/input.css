@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=UnifrakturMaguntia&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --font-unifraktur: "UnifrakturMaguntia";
+  --font-crimson: "Crimson Text";
+  --color-mabook-primary: #3c2a21;
+  --color-mabook-midtone: #b85c38;
+  --color-mabook-light: #e0c097;
+}
+
+.hero {
+  background: linear-gradient(rgba(28, 18, 11, 0.7), rgba(28, 18, 11, 0.7)),
+    url("https://images.unsplash.com/photo-1505771215590-c5fa0aec29b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+.quote {
+  background: linear-gradient(rgba(28, 18, 11, 0.8), rgba(28, 18, 11, 0.8)),
+    url(https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  padding: 100px 0;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.mabook-label {
+  @apply block font-semibold font-crimson text-mabook-light mb-1;
+}
+
+.mabook-form-control {
+  @apply focus:outline-none p-2 text-mabook-light border border-mabook-light/50 w-full rounded-xl;
+}
+.mabook-form-control option {
+  @apply text-black;
+}
+
+.mabook-guest-input {
+  @apply w-full mt-4 p-3 placeholder:text-mabook-light/30 text-mabook-light font-crimson text-lg focus:outline-none border border-mabook-midtone/40 focus:border-mabook-midtone/100;
+}
+
+.mabook-btn-primary {
+  @apply w-full p-2 bg-mabook-midtone text-white/80 rounded-xl shadow-lg duration-200 cursor-pointer hover:-translate-y-0.5 active:translate-y-1;
+}
+
+.mabook-pagination-item {
+  @apply size-8 flex items-center justify-center text-sm font-bold font-crimson border border-mabook-light text-mabook-light;
+}
+
+html {
+  scroll-behavior: smooth;
+}

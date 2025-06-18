@@ -183,9 +183,10 @@ function createBook($title, $exemplar, $authorId, $publisherId, $categoryId, $ye
     $fileStatus = move_uploaded_file($file['tmp_name'], $fileTarget);
 
     // upload file cover 
-    $coverPath = '/images/cover/' . $title . '-' . date('d-m-Y H:i:s') . '.' . pathinfo($cover['name'], PATHINFO_EXTENSION);
+    $coverExt = pathinfo($cover['name'], PATHINFO_EXTENSION);
+    $coverFilename = preg_replace('/[^a-z0-9]/', '-', strtolower($title)) . '.' . $coverExt;
+    $coverPath = '/images/' . $coverFilename;
     $coverTarget = __DIR__ . '/..' . $coverPath;
-    $coverStatus = move_uploaded_file($cover['tmp_name'], $coverTarget);
 
     $stmt = $conn->prepare('INSERT INTO books (title, exemplars, author_id, publisher_id, category_id, year, file, cover, description, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())');
     $stmt->bind_param('sssssssss', $title, $exemplar, $authorId, $publisherId, $categoryId, $year, $filePath, $coverPath, $description);
@@ -212,14 +213,15 @@ function editBook($id, $title, $exemplar, $authorId, $publisherId, $categoryId, 
     }
 
     $coverPath = $book['cover'];
-    if ($cover['name'] != '') {
-        if (file_exists(__DIR__ . '/..' . $book['cover'])) {
+    if (!empty($cover['name'])) {
+        if (!empty($book['cover']) && file_exists(__DIR__ . '/..' . $book['cover'])) {
             unlink(__DIR__ . '/..' . $book['cover']);
         }
 
-        $coverPath = '/images/cover/' . $book['title'] . '-' . date('d-m-Y H:i:s') . '.' . pathinfo($cover['name'], PATHINFO_EXTENSION);
+        $coverExt = pathinfo($cover['name'], PATHINFO_EXTENSION);
+        $coverFilename = preg_replace('/[^a-z0-9]/', '-', strtolower($title)) . '.' . $coverExt;
+        $coverPath = '/images/' . $coverFilename;
         $coverTarget = __DIR__ . '/..' . $coverPath;
-        $coverStatus = move_uploaded_file($cover['tmp_name'], $coverTarget);
     }
 
     $stmt = $conn->prepare('UPDATE books SET title = ?, exemplars = ?, author_id = ?, publisher_id = ?, category_id = ?, year = ?, file = ?, cover = ?, description = ? WHERE id = ?');

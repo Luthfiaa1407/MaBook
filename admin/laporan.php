@@ -40,7 +40,7 @@ $comments = $result->fetch_all(MYSQLI_ASSOC);
 
   <!-- ✅ Konten laporan -->
   <div class="w-full px-3">
-    <h1 class="text-3xl font-unifraktur text-mabook-light mb-6">Laporan Masalah Pengguna</h1>
+    <h1 class="text-3xl font-unifraktur text-mabook-light mb-6">Laporan Pengguna</h1>
 
     <?php if (count($comments) > 0): ?>
       <div class="bg-mabook-primary p-6 rounded-lg shadow-md">

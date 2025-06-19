@@ -11,6 +11,10 @@ if (!$userId) {
     exit;
 }
 
+// Ambil data buku untuk dropdown
+$booksResult = $conn->query("SELECT id, title FROM books ORDER BY title ASC");
+$books = $booksResult ? $booksResult->fetch_all(MYSQLI_ASSOC) : [];
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors = [];
     $book_id = $_POST['book_id'] ?? '';
@@ -23,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!empty($errors)) {
         $_SESSION['errors'] = $errors;
-        header('Location: laporan_create.php');
+        header('Location: laporan-create.php');
         exit;
     }
 
@@ -32,10 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("sii", $comment, $book_id, $userId);
 
     if ($stmt->execute()) {
-      $_SESSION['success'] = "Laporan berhasil dikirim!";
-        header('Location: ../index.php'); // atau halaman lain yang kamu mau
-exit;
-
+        $_SESSION['success'] = "Laporan berhasil dikirim!";
+        header('Location: ../index.php');
+        exit;
     } else {
         $_SESSION['error'] = "Gagal mengirim komentar: " . $conn->error;
         header('Location: laporan-create.php');
@@ -76,8 +79,15 @@ unset($_SESSION['errors'], $_SESSION['old']);
     <div class="bg-mabook-primary w-full p-5 mt-3 rounded-lg shadow-md">
       <form action="laporan-create.php" method="POST">
         <div class="mb-3">
-          <label for="book_id" class="mabook-label">ID Buku</label>
-          <input type="number" id="book_id" name="book_id" value="<?= htmlspecialchars($old['book_id'] ?? '') ?>" class="mabook-form-control" placeholder="Masukkan ID buku...">
+          <label for="book_id" class="mabook-label">Judul Buku</label>
+          <select id="book_id" name="book_id" class="mabook-form-control">
+            <option value="">-- Pilih Judul Buku --</option>
+            <?php foreach ($books as $book): ?>
+              <option value="<?= $book['id'] ?>" <?= ($old['book_id'] ?? '') == $book['id'] ? 'selected' : '' ?>>
+                <?= htmlspecialchars($book['title']) ?>
+              </option>
+            <?php endforeach; ?>
+          </select>
           <?php if (isset($errors['book_id'])): ?>
             <span class="italic text-sm text-red-400"><?= $errors['book_id'] ?></span>
           <?php endif; ?>

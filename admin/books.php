@@ -119,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <td class="p-2 border border-mabook-light/50"><?= $index + 1 ?></td>
                                     <td class="p-2 border border-mabook-light/50">
                                         <div class="flex flex-col gap-2 items-center">
-                                            <img src="http://localhost/mabook<?= $book['cover'] ?>" class="max-w-32">
+                                            <img src="<?= url($book['cover']) ?>" class="max-w-32">
                                             <?= $book['title'] ?>
                                         </div>
                                     </td>

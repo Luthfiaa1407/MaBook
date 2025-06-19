@@ -1,149 +1,66 @@
 <?php
-session_start();
-$loggedIn = isset($_SESSION['nama']);
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+require_once(__DIR__ . '/config/db.php');
+require_once(__DIR__ . '/config/config.php');
+require_once(__DIR__ . '/functions/helper.php');
+
+$userId = $_SESSION['user_id'] ?? null;
+
+if (!$userId) {
+    header("Location: login.php");
+    exit;
+}
+
+
+$query = "SELECT b.id, b.title, b.cover, b.description 
+          FROM favorites f 
+          JOIN books b ON f.book_id = b.id 
+          WHERE f.user_id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $userId);
+$stmt->execute();
+$result = $stmt->get_result();
+$favorites = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Buku Favorit Saya</title>
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favoritku | Mabook</title>
 
-  <!-- Fonts dan Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-  <!-- Style CSS -->
-  <link rel="stylesheet" href="style.css">
-
-  <!-- Variabel CSS -->
-  <style>
-    :root {
-      --dark-1: #1e1b18;
-      --dark-2: #2e2b28;
-      --dark-3: #3a3734;
-      --accent-1: #b85c38;
-      --accent-2: #e0c097;
-      --text-light: #f5f5dc;
-    }
-  </style>
+    <!-- Font Awesome & Tailwind output -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="src/output.css" />
 </head>
-<body>
-    <?php if (!$loggedIn): ?>
-    <div class="locked-overlay">
-        <div class="locked-message">
-            <h2>🔒 Akses Dibatasi</h2>
-            <p>Silakan login terlebih dahulu untuk mengakses fitur ini.</p>
-            <a href="PemWebProjectAkhir/view/login.php" class="btn-login-overlay">Login Sekarang</a>
-        </div>
+<body class="bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] bg-[#1A120B]">
+    <?php require_once(__DIR__ . '/include/header.php'); ?>
+    <div class="w-11/12 max-w-[1200px] mx-auto mt-12">
+        <h1 class="font-unifraktur text-mabook-light text-5xl font-bold text-center">
+            Daftar Favorit<span class="font-crimson">ku</span>
+        </h1>
+        <div class="h-[2px] w-48 bg-mabook-midtone mx-auto mt-4 mb-12"></div>
+
+        <?php if (count($favorites) > 0): ?>
+            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <?php foreach ($favorites as $fav): ?>
+                <article class="text-mabook-light flex flex-col p-6 border border-mabook-midtone/25 gap-4 bg-mabook-primary rounded-xl shadow-lg font-crimson">
+                    <img src="<?= htmlspecialchars($fav['cover']) ?>" alt="Cover Buku" class="h-48 w-full object-cover rounded-md" />
+                    <h2 class="text-2xl font-bold mt-2"><?= htmlspecialchars($fav['title']) ?></h2>
+                    <p class="text-sm"><?= htmlspecialchars(mb_strimwidth($fav['description'], 0, 150, "...")) ?></p>
+                    <a href="baca.php?id=<?= $fav['id'] ?>" class="mt-auto inline-flex items-center gap-1 text-mabook-midtone hover:underline">
+                        <i class="fas fa-book-open-reader"></i> Baca Sekarang
+                    </a>
+                </article>
+                <?php endforeach; ?>
+            </section>
+        <?php else: ?>
+            <p class="text-center text-mabook-light mt-20">Anda belum menambahkan apa pun ke daftar favorit.</p>
+        <?php endif; ?>
     </div>
-<?php endif; ?>
-
-  <!-- Header -->
-  <header>
-        <div class="header-container">
-            <a href="index.html" class="logo">
-                <i class="fas fa-book-open"></i>
-                MaBook
-            </a>
-            
-            <nav>
-                <ul>
-                    <li><a href="dashboard.php">Beranda</a></li>
-                    <li><a href="library.html">Koleksi</a></li>
-                    <li><a href="categories.html">Kategori</a></li>
-                    <li><a href="favorites.html">Favoritku</a></li>
-                    <li><a href="aboutUs.php">Tentang Kami</a></li>
-                </ul>
-            </nav>
-            
-            <div class="search-bar">
-                <input type="text" placeholder="Cari buku, penulis...">
-                <button type="submit"><i class="fas fa-search"></i></button>
-            </div>
-            
-            <div class="user-profile" id="profileToggle">
-                <div class="profile-pic"></div>
-                <div class="profile-dropdown" id="profileDropdown">
-                    <a href="profile.html"><i class="fas fa-user"></i> Profil Saya</a>
-                    <a href="library.html"><i class="fas fa-book"></i> Perpustakaan</a>
-                    <a href="settings.html"><i class="fas fa-cog"></i> Pengaturan</a>
-                    <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Keluar</a>
-                </div>
-            </div>
-        </div>
-    </header>
-
-  <!-- Hero Section -->
-  <main>
-    <div class="hero">
-      <div class="hero-content">
-        <h1>Daftar Buku Favorit Saya</h1>
-        <p>Koleksi buku yang paling saya sukai dan berkesan.</p>
-      </div>
-    </div>
-
-    <!-- List Buku -->
-    <section class="features">
-      <?php
-        $books = [
-            [
-                "title" => "Laskar Pelangi",
-                "author" => "Andrea Hirata",
-                "desc" => "Sebuah kisah inspiratif tentang sekelompok anak di Belitung yang berjuang untuk mendapatkan pendidikan.",
-                "image" => "https://placehold.co/200x250"
-            ],
-            [
-                "title" => "Bumi Manusia",
-                "author" => "Pramoedya Ananta Toer",
-                "desc" => "Novel yang menceritakan kehidupan masyarakat Indonesia pada masa penjajahan Belanda.",
-                "image" => "https://placehold.co/200x250"
-            ],
-            [
-                "title" => "Sapiens: A Brief History of Humankind",
-                "author" => "Yuval Noah Harari",
-                "desc" => "Sebuah analisis mendalam tentang sejarah manusia dari zaman prasejarah hingga modern.",
-                "image" => "https://placehold.co/200x250"
-            ],
-            [
-                "title" => "1984",
-                "author" => "George Orwell",
-                "desc" => "Novel distopia yang menggambarkan masyarakat totaliter yang dikendalikan oleh pengawasan dan propaganda.",
-                "image" => "https://placehold.co/200x250"
-            ],
-            [
-                "title" => "The Alchemist",
-                "author" => "Paulo Coelho",
-                "desc" => "Sebuah kisah tentang pencarian makna hidup dan mengikuti impian kita.",
-                "image" => "https://placehold.co/200x250"
-            ],
-            [
-                "title" => "Harry Potter and the Sorcerer's Stone",
-                "author" => "J.K. Rowling",
-                "desc" => "Kisah petualangan seorang penyihir muda di sekolah sihir Hogwarts.",
-                "image" => "https://placehold.co/200x250"
-            ]
-        ];
-
-        foreach ($books as $book) {
-            echo '<div class="feature-card">';
-            echo '<div class="book-cover" style="background-image: url(\'' . $book["image"] . '\')"></div>';
-            echo '<div class="book-details">';
-            echo '<h3 class="book-title">' . htmlspecialchars($book["title"]) . '</h3>';
-            echo '<p class="book-author">Penulis: ' . htmlspecialchars($book["author"]) . '</p>';
-            echo '<p class="feature-desc">' . htmlspecialchars($book["desc"]) . '</p>';
-            echo '</div></div>';
-        }
-      ?>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-bottom">
-      <p>&copy; 2023 Buku Favorit Saya. Semua hak dilindungi.</p>
-    </div>
-  </footer>
-
+    <?php require_once(__DIR__ . '/include/footer.php'); ?>
 </body>
 </html>

@@ -34,7 +34,7 @@ $search = $_GET['search'] ?? '';
 
 <?php elseif ($role === 'user'): ?>
 <!-- USER HEADER -->
-<header x-data="{ dropdownOpen: false, mobileMenuOpen: false }" class="bg-mabook-primary border-b border-mabook-midtone shadow-xl sticky top-0 z-50">
+<header x-data="{ dropdownOpen: false, mobileMenuOpen: false }" class="bg-mabook-primary border-b border-mabook-midtone shadow-xl sticky top-0 z-50 ">
     <div class="w-11/12 max-w-[1200px] mx-auto">
         <div class="flex flex-wrap md:flex-nowrap items-center justify-between gap-4 py-3">
             
@@ -57,7 +57,7 @@ $search = $_GET['search'] ?? '';
                 $menus = [
                     ['label' => 'Beranda', 'href' => 'index.php', 'icon' => 'home'],
                     ['label' => 'Kategori', 'href' => 'user/kategori.php', 'icon' => 'tags'],
-                    ['label' => 'Koleksi', 'href' => 'collection.php', 'icon' => 'book'],
+                    ['label' => 'Koleksi', 'href' => 'user/koleksi.php', 'icon' => 'book'],
                     ['label' => 'Favoritku', 'href' => 'user/favoritku.php', 'icon' => 'heart']
                 ];
                 foreach ($menus as $menu): ?>

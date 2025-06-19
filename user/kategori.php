@@ -34,16 +34,24 @@ $kategoriList = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 <div class="category-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1200px; margin: 0 auto; padding: 20px;">
 
-          <?php foreach ($kategoriList as $kategori) : ?>
-            <div class="category-card">
-              <img src="../images/default.jpg" alt="<?= htmlspecialchars($kategori['name']) ?>" class="category-img" />
-              <div class="category-content">
-                <h3 class="category-title"><?= htmlspecialchars($kategori['name']) ?></h3>
-                <p class="category-desc"><?= htmlspecialchars($kategori['description']) ?></p>
-                <a href="kategori_detail.php?id=<?= $kategori['id'] ?>" class="category-btn">Lihat Buku</a>
-              </div>
-            </div>
-          <?php endforeach; ?>
+<?php foreach ($kategoriList as $kategori) : ?>
+    <div class="category-card bg-mabook-dark rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition">
+        <!-- Gambar -->
+<img src="../images/<?= htmlspecialchars($kategori['gambar']) ?>" 
+alt="<?= htmlspecialchars($kategori['name']) ?>" class="category-img" />
+
+
+        <!-- Konten -->
+        <div class="category-content p-4">
+            <h3 class="category-title text-xl font-bold text-mabook-light mb-1"><?= htmlspecialchars($kategori['name']) ?></h3>
+            <p class="category-desc text-sm text-mabook-midtone mb-3"><?= htmlspecialchars($kategori['description']) ?></p>
+            <a href="kategori_detail.php?id=<?= $kategori['id'] ?>" class="category-btn inline-block px-4 py-2 bg-mabook-midtone text-mabook-dark rounded hover:bg-mabook-light transition">
+                Lihat Buku
+            </a>
+        </div>
+    </div>
+<?php endforeach; ?>
+
         </div>
       </div>
     </section>

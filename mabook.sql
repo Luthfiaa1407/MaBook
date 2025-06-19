@@ -116,19 +116,24 @@ INSERT INTO `books` (`id`, `title`, `exemplars`, `author_id`, `publisher_id`, `c
 --
 
 CREATE TABLE `categories` (
-  `id` bigint UNSIGNED NOT NULL,
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `description` mediumtext NOT NULL
+  `description` mediumtext NOT NULL,
+  `gambar` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 --
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`id`, `name`, `description`) VALUES
-(2, 'Fiksi', 'Ya fiksi'),
-(3, 'Saintek', 'ya saintek'),
-(4, 'Non Fiksi', 'Kategori yang mencakup buku berdasarkan fakta dan kejadian nyata, seperti biografi dan buku sejarah.');
+INSERT INTO `categories` (`name`, `description`, `gambar`) VALUES
+('Fiksi', 'Karya fiksi dan imajinatif', '1984.jpg'),
+('Non Fiksi', 'Berdasarkan fakta nyata', NULL),
+('Pendidikan', 'Buku pelajaran dan referensi', 'laskar-pelangi.jpg'),
+('Romansa', 'Cerita cinta dan hubungan emosional', 'bumi.jpg'),
+('Sejarah', 'Buku sejarah dan tokoh masa lalu', 'sapiens--a-brief-history-of-humankind.jpg');
 
 -- --------------------------------------------------------
 

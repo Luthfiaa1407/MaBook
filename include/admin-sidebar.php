@@ -39,6 +39,14 @@
                 <div class="font-bold">Penerbit</div>
             </div>
         </a>
+        <a href="laporan.php" class="relative py-2 px-4 w-full group">
+  <div class="absolute h-[2px] left-0 right-0 w-0 duration-200 group-hover:w-full bg-mabook-light bottom-0"></div>
+  <div class="flex gap-3 items-center text-lg">
+    <i class="fas w-6 fa-comment-dots"></i>
+    <div class="font-bold <?= basename($_SERVER['PHP_SELF']) === 'laporan.php' ? 'text-mabook-accent' : '' ?>">Comments</div>
+  </div>
+  </a>
+
     </div> <!-- end sidebar nav -->
     <div class="h-[2px] w-48 bg-mabook-midtone mt-4 mx-auto"></div>
     <div class="flex flex-col w-full items-start justify-start px-3 mt-4 gap-4">

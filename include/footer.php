@@ -7,7 +7,7 @@
             </div>
             <a href="#">FAQ</a>
             <a href="#">Panduan Penggunaan</a>
-            <a href="/mabook/user/laporan-create.php">Laporan Masalah</a>
+            <a href="#">Laporan Masalah</a>
         </div>
         <div class="flex flex-col gap-4 items-start justify-start">
             <div class="flex flex-col gap-3">

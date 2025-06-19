@@ -21,7 +21,7 @@
             <div class="w-10/12 max-w-[1000px] mx-auto px-16 py-32 gap-12 flex flex-col items-center justify-center">
                 <div class="font-unifraktur text-mabook-light text-5xl font-bold">Mabook<span class="font-crimson">k</span></div>
                 <p class="font-crimson text-xl text-center text-white">
-                    Perpustakaan digital Dark Academia yang menghadirkan koleksi literatur klasik dan kontemporer terbaik. Temukan dunia pengetahuan, fiksi spekulatif, puisi abadi, dan karya-karya pemikiran mendalam dalam genggaman Anda.
+                    Perpustakaan digital yang menghadirkan koleksi literatur klasik dan kontemporer terbaik. Temukan dunia pengetahuan, fiksi spekulatif, puisi abadi, dan karya-karya pemikiran mendalam dalam genggaman Anda.
                 </p>
                 <a href="collection.php" class="bg-mabook-midtone p-3 shadow-xl font-crimson text-white font-bold text-lg">Jelajahi Koleksi</a>
             </div>

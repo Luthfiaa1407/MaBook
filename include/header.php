@@ -141,22 +141,37 @@ $search = $_GET['search'] ?? '';
                 </a>
             </div>
 
-            <!-- Navigation Menu -->
-            <nav class="flex text-mabook-light text-lg justify-center items-center font-crimson gap-3">
+ <!-- CENTER: Navigation Menu -->
+            <nav class="flex flex-wrap items-center gap-3 text-mabook-light font-crimson text-sm md:text-base">
                 <?php
-                $guestMenus = [
-                    'Beranda' => 'index.php',
-                    'Kategori' => 'user/kategori.php',
-                    'Koleksi' => 'collection.php'
+                $menus = [
+                    ['label' => 'Beranda', 'href' => 'login.php', 'icon' => 'home'],
+                    ['label' => 'Kategori', 'href' => 'login.php', 'icon' => 'tags'],
+                    ['label' => 'Koleksi', 'href' => 'login.php', 'icon' => 'book'],
+                    ['label' => 'Favoritku', 'href' => 'login.php', 'icon' => 'heart']
                 ];
-                
-                foreach ($guestMenus as $label => $href): ?>
-                    <a href="<?= url($href) ?>" class="hover:text-mabook-midtone p-2 group relative text-center">
-                        <?= $label ?>
-                        <div class="absolute bg-mabook-midtone w-0 left-0 bottom-0 h-[2px] group-hover:w-full duration-200"></div>
+                foreach ($menus as $menu): ?>
+                    <a href="<?= url($menu['href']) ?>"
+                       class="flex items-center gap-2 px-3 py-2 rounded hover:bg-mabook-midtone/20 transition">
+                        <i class="fas fa-<?= $menu['icon'] ?>"></i>
+                        <span><?= $menu['label'] ?></span>
                     </a>
                 <?php endforeach; ?>
             </nav>
+
+            <!-- RIGHT: Search + Profile -->
+            <div class="flex items-center gap-3 w-full md:w-auto">
+                <!-- Search -->
+                <form action="<?= url('collection.php') ?>" method="GET" class="flex-grow md:flex-grow-0">
+                    <div class="flex items-center bg-mabook-dark/50 rounded-full border border-mabook-midtone/30 hover:border-mabook-midtone/50 transition">
+                        <button type="submit" class="text-mabook-midtone p-2 pl-3 hover:text-mabook-light transition">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <input name="search" value="<?= htmlspecialchars($search) ?>" type="text"
+                               class="bg-transparent p-2 text-mabook-light font-crimson w-full md:w-48 placeholder-mabook-midtone/75 focus:outline-none rounded-r-full"
+                               placeholder="Cari buku...">
+                    </div>
+                </form>
 
             <!-- Auth Buttons -->
             <div class="flex gap-2 items-center justify-center">

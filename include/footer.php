@@ -7,7 +7,6 @@
             </div>
             <a href="#">FAQ</a>
             <a href="#">Panduan Penggunaan</a>
-            <a href="#">Kontak Kami</a>
             <a href="/mabook/user/laporan-create.php">Laporan Masalah</a>
         </div>
         <div class="flex flex-col gap-4 items-start justify-start">
@@ -17,7 +16,6 @@
             </div>
             <a href="#">Kebijakan Privasi</a>
             <a href="#">Syarat & Ketentuan</a>
-            <a href="#">Lisensi</a>
             <a href="#">Kebijakan Hak Cipta</a>
         </div>
         <div class="flex flex-col gap-4 items-start justify-start">
@@ -26,9 +24,7 @@
                 <div class="h-[2px] bg-mabook-midtone w-24"></div>
             </div>
             <a href="#">Visi & Misi</a>
-            <a href="#">Tim kami</a>
-            <a href="#">Karir</a>
-            <a href="#">Blog</a>
+            <a href="#">Tentang kami</a>
         </div>
         <div class="flex flex-col gap-4 items-start justify-start">
             <div class="flex flex-col gap-3">

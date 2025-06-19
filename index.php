@@ -60,8 +60,8 @@
                 <div class="text-mabook-light flex flex-col items-start justify-center p-8 border border-mabook-midtone/25 gap-5 bg-mabook-primary relative rounded-xl overflow-hidden font-crimson">
                     <div class="absolute top-0 left-0 h-[6px] bg-mabook-midtone w-full"></div>
                     <i class="fas fa-book text-mabook-midtone text-4xl mb-4"></i>
-                    <div class="font-bold text-3xl">Catatan Pribadi</div>
-                    <p>Tambahkan highlight dan catatan pribadi di setiap halaman buku yang Anda baca.</p>
+                    <div class="font-bold text-3xl">Beri Komentar</div>
+                    <p>Berikan komentar terhadap Buku yang Anda Baca</p>
                 </div>
                 <div class="text-mabook-light flex flex-col items-start justify-center p-8 border border-mabook-midtone/25 gap-5 bg-mabook-primary relative rounded-xl overflow-hidden font-crimson">
                     <div class="absolute top-0 left-0 h-[6px] bg-mabook-midtone w-full"></div>

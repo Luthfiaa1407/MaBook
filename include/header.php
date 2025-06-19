@@ -20,7 +20,7 @@ $search = $_GET['search'] ?? '';
                     Beranda
                     <div class="absolute bg-mabook-midtone w-0 left-0 bottom-0 h-[2px] group-hover:w-full duration-200"></div>
                 </a>
-                <a href="<?= url('kategori.php') ?>" class="hover:text-mabook-midtone p-2 group relative text-center">
+                <a href="<?= url('user/kategori.php') ?>" class="hover:text-mabook-midtone p-2 group relative text-center">
                     Kategori
                     <div class="absolute bg-mabook-midtone w-0 left-0 bottom-0 h-[2px] group-hover:w-full duration-200"></div>
                 </a>

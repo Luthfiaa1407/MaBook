@@ -6,6 +6,7 @@
 <?php require_once(__DIR__ . '/../functions/publishers.php') ?>
 
 <?php
+
 $authors = listAuthors([], ['limit' => 999]);
 $publishers = listPublishers([], ['limit' => 999]);
 $categories = listCategories([], ['limit' => 999]);
@@ -50,10 +51,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // eksekusi backend update publisher
     if (editBook($id, $title, $exemplars, $authorId, $publisherId, $categoryId, $year, $file, $cover, $description)) {
-        $_SESSION['success'] = "Buku berhasil diperbarui";
+        $_SESSION['success'] = "Publisher berhasil dibuat";
         header('Location: books.php');
     } else {
-        $_SESSION['error'] = "Buku tidak dapat diperbarui";
+        $_SESSION['error'] = "Publisher tidak dapat dibuat";
         header('Location: book-update.php?id=' . $id);
     }
     exit;
@@ -68,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mabook</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="<?= url('src/output.css') ?>">
+    <link rel="stylesheet" href="/mabook/src/output.css">
 </head>
 
 <body class="bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] bg-[#1A120B]">
@@ -114,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <select name="category_id" id="category_id" class="mabook-form-control">
                                     <option value="">- Pilih kategori -</option>
                                     <?php foreach ($categories as $category): ?>
-                                        <option <?= ($old['category_id'] ?? $book['category_id']) == $category['id'] ? 'selected' : '' ?> value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                                        <option <?= $old['category_id'] ?? $book['category_id'] == $category['id'] ? 'selected' : '' ?> value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
                                 <?php if (isset($errors['category_id'])): ?>
@@ -129,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <select name="author_id" id="author_id" class="mabook-form-control">
                                     <option value="">- Pilih penulis -</option>
                                     <?php foreach ($authors as $author): ?>
-                                        <option <?= ($old['author_id'] ?? $book['author_id']) == $author['id'] ? 'selected' : '' ?> value="<?= $author['id'] ?>"><?= $author['name'] ?></option>
+                                        <option <?= $old['author_id'] ?? $book['author_id'] == $author['id'] ? 'selected' : '' ?> value="<?= $author['id'] ?>"><?= $author['name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
                                 <?php if (isset($errors['author_id'])): ?>
@@ -144,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <select name="publisher_id" id="publisher_id" class="mabook-form-control">
                                     <option value="">- Pilih penerbit -</option>
                                     <?php foreach ($publishers as $publisher): ?>
-                                        <option <?= ($old['publisher_id'] ?? $book['publisher_id']) == $publisher['id'] ? 'selected' : '' ?> value="<?= $publisher['id'] ?>"><?= $publisher['name'] ?></option>
+                                        <option <?= $old['publisher_id'] ?? $book['publisher_id'] == $publisher['id'] ? 'selected' : '' ?> value="<?= $publisher['id'] ?>"><?= $publisher['name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
                                 <?php if (isset($errors['publisher_id'])): ?>
@@ -155,8 +156,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <label for="year" class="mabook-label">Tahun Terbit</label>
                                 <select name="year" id="year" class="mabook-form-control">
                                     <option value="">- Pilih tahun terbit -</option>
-                                    <?php for ($i = date('Y'); $i >= 1990; $i--): ?>
-                                        <option <?= ($old['year'] ?? $book['year'] ?? null) == $i ? 'selected' : '' ?> value="<?= $i ?>"><?= $i ?></option>
+                                    <?php for ($i = 1990; $i <= date('Y'); $i++): ?>
+                                        <option <?= $old['year'] ?? $book['year'] ?? null == $i ? 'selected' : '' ?> value="<?= $i ?>"><?= $i ?></option>
                                     <?php endfor; ?>
                                 </select>
                                 <?php if (isset($errors['year'])): ?>
@@ -194,30 +195,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <div class="w-full lg:w-4/12 bg-mabook-primary p-4 sticky top-8">
                         <label class="mabook-label">Cover</label>
-                        <img src="<?= url($book['cover'] ?? 'images/default-cover.jpg') ?>" alt="cover" class="w-full h-auto object-contain max-h-64" id="cover-preview">
+                        <img src="<?= url($book['cover']) ?>" alt="cover" class="max-w" id="cover-preview">
                         <label class="mabook-label mt-3">File</label>
-                        <div class="font-crimson text-mabook-light p-2 border border-mabook-light break-all"><?= basename($book['file'] ?? '') ?></div>
+                        <div class="font-crimson text-mabook-light p-2 border border-mabook-light"><?= $book['file'] ?></div>
                     </div>
                 </div>
             </div>
         </div><!-- end admin content -->
+
 
     </div> <!-- end container -->
 
     <?php require_once(__DIR__ . '/../include/footer.php') ?>
 
     <script>
-        // Preview cover image
-        document.getElementById('cover').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('cover-preview').src = e.target.result;
-                }
-                reader.readAsDataURL(file);
-            }
+        document.querySelector(`[name='cover']`).addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const preview = document.getElementById('cover-preview');
+            preview.src = URL.createObjectURL(file);
         });
     </script>
 </body>
+
 </html>

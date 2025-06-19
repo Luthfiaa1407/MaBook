@@ -5,8 +5,8 @@
                 <div class="font-semibold text-lg">Bantuan</div>
                 <div class="h-[2px] bg-mabook-midtone w-24"></div>
             </div>
-            <a href="#">FAQ</a>
-            <a href="#">Panduan Penggunaan</a>
+            <a href="faq.php">FAQ</a>
+            <a href="panduan_penggunaan.php">Panduan Penggunaan</a>
             <a href="#">Laporan Masalah</a>
         </div>
         <div class="flex flex-col gap-4 items-start justify-start">

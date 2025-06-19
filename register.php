@@ -58,7 +58,7 @@ unset($_SESSION['errors'], $_SESSION['old'])
     <div class="w-screen h-screen flex flex-col items-center justify-center gap-6">
         <div>
             <a href="index.php" class="block text-center font-unifraktur text-mabook-light text-6xl">Maboo<span class="font-crimson">k</span></a>
-            <p class="font-crimson text-mabook-light">Selamat datang!. Silahkan login terlebih dahulu</p>
+            <p class="font-crimson text-mabook-light">Selamat datang! Silahkan login terlebih dahulu</p>
         </div>
         <div class="justify-center p-8 bg-mabook-primary text-mabook-light shadow-2xl rounded-2xl w-11/12 lg:w-1/2">
             <form action="" method="POST">
@@ -89,7 +89,7 @@ unset($_SESSION['errors'], $_SESSION['old'])
 
                 <button type="submit" class="block bg-mabook-midtone p-3 text-center w-full mt-4 font-crimson font-bold text-lg cursor-pointer active:translate-y-0.5">Sign in</button>
             </form>
-            <div class="italic text-sm text-center mt-2">Atau udah punya akun?, silahkan <a href="login.php" class="underline">login</a>.</div>
+            <div class="italic text-sm text-center mt-2">Atau udah punya akun? Silahkan <a href="login.php" class="underline">login</a>.</div>
         </div>
     </div>
 </body>

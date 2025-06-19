@@ -73,9 +73,9 @@ $search = $_GET['search'] ?? '';
                 <?php
                 $menus = [
                     ['label' => 'Beranda', 'href' => 'index.php', 'icon' => 'home'],
-                    ['label' => 'Kategori', 'href' => 'kategori.php', 'icon' => 'tags'],
+                    ['label' => 'Kategori', 'href' => 'user/kategori.php', 'icon' => 'tags'],
                     ['label' => 'Koleksi', 'href' => 'collection.php', 'icon' => 'book'],
-                    ['label' => 'Favoritku', 'href' => 'favoritku.php', 'icon' => 'heart']
+                    ['label' => 'Favoritku', 'href' => 'user/favoritku.php', 'icon' => 'heart']
                 ];
                 foreach ($menus as $menu): ?>
                     <a href="<?= url($menu['href']) ?>"
@@ -130,9 +130,6 @@ $search = $_GET['search'] ?? '';
                         <a href="<?= url('edit-profile.php') ?>" class="block px-4 py-2 text-sm text-mabook-light hover:bg-mabook-midtone/10 flex items-center gap-2">
                             <i class="fas fa-user-edit w-4"></i> Edit Profil
                         </a>
-                        <a href="<?= url('reading-history.php') ?>" class="block px-4 py-2 text-sm text-mabook-light hover:bg-mabook-midtone/10 flex items-center gap-2">
-                            <i class="fas fa-history w-4"></i> Riwayat Baca
-                        </a>
                         <div class="border-t border-mabook-midtone/20 my-1"></div>
                         <a href="<?= url('logout.php') ?>" class="block px-4 py-2 text-sm text-red-400 hover:bg-red-900/10 flex items-center gap-2">
                             <i class="fas fa-sign-out-alt w-4"></i> Keluar
@@ -166,7 +163,7 @@ $search = $_GET['search'] ?? '';
                 <?php
                 $guestMenus = [
                     'Beranda' => 'index.php',
-                    'Kategori' => 'kategori.php',
+                    'Kategori' => 'user/kategori.php',
                     'Koleksi' => 'collection.php'
                 ];
                 

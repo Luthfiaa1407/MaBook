@@ -107,10 +107,10 @@ $search = $_GET['search'] ?? '';
                             <p class="text-sm font-medium text-mabook-light"><?= htmlspecialchars($loggedUser['name']) ?></p>
                             <p class="text-xs text-mabook-midtone/80 truncate"><?= htmlspecialchars($loggedUser['email']) ?></p>
                         </div>
-                        <a href="<?= url('profile.php') ?>" class="block px-4 py-2 text-sm text-mabook-light hover:bg-mabook-midtone/10 flex items-center gap-2">
-                            <i class="fas fa-user-circle w-4"></i> Profil Saya
+                        <a href="<?= url('user/profil.php') ?>" class="block px-4 py-2 text-sm text-mabook-light hover:bg-mabook-midtone/10 flex items-center gap-2">
+                                <i class="fas fa-user-circle w-4"></i> Profil Saya
                         </a>
-                        <a href="<?= url('edit-profile.php') ?>" class="block px-4 py-2 text-sm text-mabook-light hover:bg-mabook-midtone/10 flex items-center gap-2">
+                        <a href="<?= url('user/edit_profil.php') ?>" class="block px-4 py-2 text-sm text-mabook-light hover:bg-mabook-midtone/10 flex items-center gap-2">
                             <i class="fas fa-user-edit w-4"></i> Edit Profil
                         </a>
                         <div class="border-t border-mabook-midtone/20 my-1"></div>

@@ -37,7 +37,6 @@ $favorites = $result->fetch_all(MYSQLI_ASSOC);
 </head>
 
 <body class="bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] bg-[#1A120B] min-h-screen flex flex-col">
-
     <?php require_once(__DIR__ . '/../include/header.php'); ?>
 
     <main class="w-11/12 max-w-[1200px] mx-auto mt-12 flex-1">
@@ -65,6 +64,5 @@ $favorites = $result->fetch_all(MYSQLI_ASSOC);
     </main>
 
     <?php require_once(__DIR__ . '/../include/footer.php'); ?>
-
 </body>
 </html>

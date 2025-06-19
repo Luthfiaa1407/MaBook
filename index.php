@@ -19,7 +19,7 @@
     <div class="w-11/12 max-w-[1200px] mx-auto mt-12">
         <div class="hero w-full shadow-[0_10px_20px_rgba(0,0,0,0.5)]">
             <div class="w-10/12 max-w-[1000px] mx-auto px-16 py-32 gap-12 flex flex-col items-center justify-center">
-                <div class="font-unifraktur text-mabook-light text-5xl font-bold">Maboo<span class="font-crimson">k</span></div>
+                <div class="font-unifraktur text-mabook-light text-5xl font-bold">Mabook<span class="font-crimson">k</span></div>
                 <p class="font-crimson text-xl text-center text-white">
                     Perpustakaan digital Dark Academia yang menghadirkan koleksi literatur klasik dan kontemporer terbaik. Temukan dunia pengetahuan, fiksi spekulatif, puisi abadi, dan karya-karya pemikiran mendalam dalam genggaman Anda.
                 </p>
@@ -54,7 +54,7 @@
                 <div class="text-mabook-light flex flex-col items-start justify-center p-8 border border-mabook-midtone/25 gap-5 bg-mabook-primary relative rounded-xl overflow-hidden font-crimson">
                     <div class="absolute top-0 left-0 h-[6px] bg-mabook-midtone w-full"></div>
                     <i class="fas fa-bookmark text-mabook-midtone text-4xl mb-4"></i>
-                    <div class="font-bold text-3xl">Book Tracker</div>
+                    <div class="font-bold text-3xl">Book Mark</div>
                     <p>Lacak buku yang sedang dan akan dibaca dengan sistem yang terorganisir dan personal.</p>
                 </div>
                 <div class="text-mabook-light flex flex-col items-start justify-center p-8 border border-mabook-midtone/25 gap-5 bg-mabook-primary relative rounded-xl overflow-hidden font-crimson">
@@ -66,8 +66,8 @@
                 <div class="text-mabook-light flex flex-col items-start justify-center p-8 border border-mabook-midtone/25 gap-5 bg-mabook-primary relative rounded-xl overflow-hidden font-crimson">
                     <div class="absolute top-0 left-0 h-[6px] bg-mabook-midtone w-full"></div>
                     <i class="fas fa-fire text-mabook-midtone text-4xl mb-4"></i>
-                    <div class="font-bold text-3xl">Reading Streak</div>
-                    <p>Pertahankan kebiasaan membaca dengan sistem streak harian yang memotivasi.</p>
+                    <div class="font-bold text-3xl">Favoritkan Buku Anda</div>
+                    <p>Tambah dan sukai semua Buku yang anda suka.</p>
                 </div>
             </div>
         </div> <!-- end value proposition -->

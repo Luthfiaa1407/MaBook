@@ -15,29 +15,12 @@ $search = $_GET['search'] ?? '';
             <div class="flex items-center gap-3">
                 <div class="text-mabook-midtone text-5xl"><i class="fas fa-book-open"></i></div>
                 <a href="<?= url('admin/dashboard.php') ?>" class="block font-unifraktur text-mabook-light text-5xl">
-                    Mabook<span class="font-crimson">k</span>
+                    Maboo<span class="font-crimson">k</span>
                 </a>
             </div>
 
             <!-- Navigation Menu -->
-            <nav class="flex text-mabook-light text-lg justify-center items-center font-crimson gap-3">
-                <?php
-                $adminMenus = [
-                    'Dashboard' => 'admin/dashboard.php',
-                    'Kelola Buku' => 'admin/books.php',
-                    'Kelola Kategori' => 'admin/categories.php',
-                    'Kelola Penulis' => 'admin/authors.php',
-                    'Kelola Penerbit' => 'admin/publishers.php'
-                ];
-                
-                foreach ($adminMenus as $label => $href): ?>
-                    <a href="<?= url($href) ?>" class="hover:text-mabook-midtone p-2 group relative text-center">
-                        <?= $label ?>
-                        <div class="absolute bg-mabook-midtone w-0 left-0 bottom-0 h-[2px] group-hover:w-full duration-200"></div>
-                    </a>
-                <?php endforeach; ?>
-            </nav>
-
+            
             <!-- User Section -->
             <div class="flex gap-2 items-center justify-center">
                 <div class="text-mabook-light text-sm italic">Halo, Admin</div>

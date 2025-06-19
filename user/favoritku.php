@@ -69,6 +69,8 @@ $favorites = $result->fetch_all(MYSQLI_ASSOC);
         </div>
     </main>
 
-    <?php require_once(__DIR__ . '/../include/footer.php'); ?>
+    
 </body>
+<?php require_once(__DIR__ . '/../include/footer.php'); ?>
 </html>
+

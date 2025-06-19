@@ -57,15 +57,18 @@
                     <div class="font-bold text-3xl">Book Mark</div>
                     <p>Lacak buku yang sedang dan akan dibaca dengan sistem yang terorganisir dan personal.</p>
                 </div>
+               <a href="user/laporan-create.php" class="block">
+                    <div class="text-mabook-light flex flex-col items-start justify-center p-8 border border-mabook-midtone/25 gap-5 bg-mabook-primary relative rounded-xl overflow-hidden font-crimson hover:shadow-lg transition">
+                        <div class="absolute top-0 left-0 h-[6px] bg-mabook-midtone w-full"></div>
+                        <i class="fas fa-pen text-mabook-midtone text-4xl mb-4"></i>
+                        <div class="font-bold text-3xl">Beri Komentar</div>
+                        <p>Berikan komentar terhadap Buku yang Anda Baca</p>
+                    </div>
+                    </a>
+
                 <div class="text-mabook-light flex flex-col items-start justify-center p-8 border border-mabook-midtone/25 gap-5 bg-mabook-primary relative rounded-xl overflow-hidden font-crimson">
                     <div class="absolute top-0 left-0 h-[6px] bg-mabook-midtone w-full"></div>
-                    <i class="fas fa-book text-mabook-midtone text-4xl mb-4"></i>
-                    <div class="font-bold text-3xl">Catatan Pribadi</div>
-                    <p>Tambahkan highlight dan catatan pribadi di setiap halaman buku yang Anda baca.</p>
-                </div>
-                <div class="text-mabook-light flex flex-col items-start justify-center p-8 border border-mabook-midtone/25 gap-5 bg-mabook-primary relative rounded-xl overflow-hidden font-crimson">
-                    <div class="absolute top-0 left-0 h-[6px] bg-mabook-midtone w-full"></div>
-                    <i class="fas fa-fire text-mabook-midtone text-4xl mb-4"></i>
+                    <i class="fas fa-star text-mabook-midtone text-4xl mb-4"></i>
                     <div class="font-bold text-3xl">Favoritkan Buku Anda</div>
                     <p>Tambah dan sukai semua Buku yang anda suka.</p>
                 </div>

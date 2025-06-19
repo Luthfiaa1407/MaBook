@@ -1598,3 +1598,44 @@ footer {
 .btn-login-overlay:hover {
   background: var(--burgundy);
 }
+
+.guide-card {
+  transition: all 0.3s ease;
+  border-left: 4px solid #D4AF37;
+}
+.guide-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+.divider {
+  width: 150px;
+  height: 2px;
+  background: linear-gradient(90deg, #D4AF37, transparent);
+  margin: 1.5rem auto;
+}
+
+/* ===== MABOOK - STYLE TAMBAHAN PANDUAN ===== */
+
+.guide-card {
+  transition: all 0.3s ease;
+  border-left: 4px solid #b85c38; /* Sesuai warna mabook-midtone */
+}
+.guide-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.divider {
+  width: 150px;
+  height: 2px;
+  background: linear-gradient(90deg, #b85c38, transparent);
+  margin: 1.5rem auto;
+}
+
+/* src/style.css */
+.mabook-bg {
+  background-color: #1A120B;
+  background-image: url('https://www.transparenttextures.com/patterns/black-paper.png');
+  background-repeat: repeat;
+  color: #fff;
+}

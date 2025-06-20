@@ -24,6 +24,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 $favorites = $result->fetch_all(MYSQLI_ASSOC);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,40 +38,42 @@ $favorites = $result->fetch_all(MYSQLI_ASSOC);
 </head>
 
 <body class="min-h-screen flex flex-col bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] bg-[#1A120B]">
-    <?php require_once(__DIR__ . '/../include/header.php'); ?>
+<?php require_once(__DIR__ . '/../include/header.php'); ?>
 
-    <main class="flex-1">
-        <div class="w-11/12 max-w-[1200px] mx-auto mt-12 pb-24">
-            <h1 class="font-unifraktur text-mabook-light text-5xl font-bold text-center">
-                Daftar Favorit<span class="font-crimson">ku</span>
-            </h1>
-            <div class="h-[2px] w-48 bg-mabook-midtone mx-auto mt-4 mb-12"></div>
+<main class="flex-1">
+    <div class="w-11/12 max-w-[1200px] mx-auto mt-12 pb-24">
+        <h1 class="font-unifraktur text-mabook-light text-5xl font-bold text-center">
+            Daftar Favorit<span class="font-crimson">ku</span>
+        </h1>
+        <div class="h-[2px] w-48 bg-mabook-midtone mx-auto mt-4 mb-12"></div>
 
-            <?php if (count($favorites) > 0): ?>
-                <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <?php foreach ($favorites as $fav): ?>
-                    <article class="text-mabook-light flex flex-col p-6 border border-mabook-midtone/25 gap-4 bg-mabook-primary rounded-xl shadow-lg font-crimson">
-                        <img src="<?= htmlspecialchars($fav['cover']) ?>" alt="Cover Buku" class="h-48 w-full object-cover rounded-md" />
-                        <h2 class="text-2xl font-bold mt-2"><?= htmlspecialchars($fav['title']) ?></h2>
-                        <p class="text-sm"><?= htmlspecialchars(mb_strimwidth($fav['description'], 0, 150, "...")) ?></p>
-                        <a href="../baca.php?id=<?= $fav['id'] ?>" class="mt-auto inline-flex items-center gap-1 text-mabook-midtone hover:underline">
-                            <i class="fas fa-book-open-reader"></i> Baca Sekarang
-                        </a>
-                    </article>
-                    <?php endforeach; ?>
-                </section>
+        <?php if (count($favorites) > 0): ?>
+            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <?php foreach ($favorites as $fav): ?>
+                    <a href="../baca.php?id=<?= $fav['id'] ?>" class="group">
+                        <div class="group-hover:-translate-y-1 duration-200 text-mabook-light h-full flex flex-col items-start justify-start p-4 border border-mabook-midtone/25 gap-5 bg-mabook-primary relative rounded-xl overflow-hidden font-crimson">
+                            <img 
+                                src="<?= htmlspecialchars('../' . ltrim($fav['cover'], '/')) ?>" 
+                                alt="Cover Buku <?= htmlspecialchars($fav['title']) ?>" 
+                                class="w-full h-64 object-contain bg-white p-2 rounded"
+                                onerror="this.src='../images/default-cover.jpg';"
+                            />
+                            <div class="flex flex-col gap-3">
+                                <h2 class="text-2xl font-bold"><?= htmlspecialchars($fav['title']) ?></h2>
+                                <p class="text-sm"><?= htmlspecialchars(mb_strimwidth($fav['description'], 0, 150, "...")) ?></p>
+                            </div>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+            </section>
 
-                <!-- Spacer universal agar footer tidak menggantung -->
-                <div class="h-32 lg:h-40"></div>
+            <div class="h-32 lg:h-40"></div>
+        <?php else: ?>
+            <p class="text-center text-mabook-light mt-20">Anda belum menambahkan apa pun ke daftar favorit.</p>
+        <?php endif; ?>
+    </div>
+</main>
 
-            <?php else: ?>
-                <p class="text-center text-mabook-light mt-20">Anda belum menambahkan apa pun ke daftar favorit.</p>
-            <?php endif; ?>
-        </div>
-    </main>
-
-    
-</body>
 <?php require_once(__DIR__ . '/../include/footer.php'); ?>
+</body>
 </html>
-

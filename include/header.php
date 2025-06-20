@@ -13,7 +13,7 @@ $search = $_GET['search'] ?? '';
         <div class="flex items-center justify-between gap-2 p-3">
             <!-- Logo Section -->
             <div class="flex items-center gap-3">
-                <div class="text-mabook-midtone text-5xl"><i class="fas fa-book-open"></i></div>
+                <div class="hidden-lg: text-mabook-midtone text-5xl"><i class="fas fa-book-open"></i></div>
                 <a href="<?= url('admin/dashboard.php') ?>" class="block font-unifraktur text-mabook-light text-5xl">
                     Maboo<span class="font-crimson">k</span>
                 </a>
@@ -23,7 +23,7 @@ $search = $_GET['search'] ?? '';
             
             <!-- User Section -->
             <div class="flex gap-2 items-center justify-center">
-                <div class="text-mabook-light text-sm italic">Halo, Admin</div>
+                <div class="hidden-lg: text-mabook-light text-sm italic">Halo, Admin</div>
                 <a href="<?= url('logout.php') ?>" class="font-crimson text-mabook-light border border-mabook-light px-3 py-2 text-lg rounded-xl hover:bg-mabook-midtone/25 transition-colors">
                     Logout
                 </a>
@@ -70,7 +70,7 @@ $search = $_GET['search'] ?? '';
             </nav>
 
             <!-- RIGHT: Search + Profile -->
-            <div class="flex items-center gap-3 w-full md:w-auto">
+            <div class="hidden-lg: flex items-center gap-3 w-full md:w-auto">
                 <!-- Search -->
                 <form action="<?= url('collection.php') ?>" method="GET" class="flex-grow md:flex-grow-0">
                     <div class="flex items-center bg-mabook-dark/50 rounded-full border border-mabook-midtone/30 hover:border-mabook-midtone/50 transition">
@@ -84,7 +84,7 @@ $search = $_GET['search'] ?? '';
                 </form>
 
                 <!-- Profile Dropdown -->
-                <div class="relative" x-data="{ open: false }">
+                <div class="hidden-lg: relative" x-data="{ open: false }">
                     <button @click="open = !open" class="flex items-center gap-2 text-mabook-light hover:text-mabook-midtone">
                         <div class="w-9 h-9 rounded-full overflow-hidden border-2 border-mabook-midtone">
                             <?php if (!empty($loggedUser['profile_picture'])): ?>
@@ -135,7 +135,7 @@ $search = $_GET['search'] ?? '';
         <div class="flex items-center justify-between gap-2 p-3">
             <!-- Logo Section -->
             <div class="flex items-center gap-3">
-                <div class="text-mabook-midtone text-5xl"><i class="fas fa-book-open"></i></div>
+                <div class="hidden-lg: text-mabook-midtone text-5xl"><i class="fas fa-book-open"></i></div>
                 <a href="<?= url('index.php') ?>" class="block font-unifraktur text-mabook-light text-5xl">
                     Mabook<span class="font-crimson">k</span>
                 </a>
@@ -160,7 +160,7 @@ $search = $_GET['search'] ?? '';
             </nav>
 
             <!-- RIGHT: Search + Profile -->
-            <div class="flex items-center gap-3 w-full md:w-auto">
+            <div class="hidden-lg: flex items-center gap-3 w-full md:w-auto">
                 <!-- Search -->
                 <form action="<?= url('collection.php') ?>" method="GET" class="flex-grow md:flex-grow-0">
                     <div class="flex items-center bg-mabook-dark/50 rounded-full border border-mabook-midtone/30 hover:border-mabook-midtone/50 transition">

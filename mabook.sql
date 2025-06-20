@@ -103,16 +103,21 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id`, `title`, `exemplars`, `author_id`, `publisher_id`, `category_id`, `year`, `file`, `cover`, `description`, `created_at`) VALUES
-(1, 'Laskar Pelangi', '8', 1, 1, 2, '2025', '/docs/Laskar Pelangi-15-06-2025 08:09:09.pdf', '/images/cover/Laskar Pelangi-15-06-2025 08:09:09.jpg', 'Ya itu', '2011-07-28 00:00:00'),
-(6, 'Bumi', '19', 12, 3, 2, '2025', '/docs/Bumi-15-06-2025 08:12:06pdf', '/images/cover/Bumi-15-06-2025 08:17:56.jpg', 'Novel pertama dalam serial \"Bumi\" karya Tere Liye. Serial ini bercerita tentang petualangan tiga remaja, Raib, Seli, dan Ali, yang memiliki kekuatan super dan terhubung dengan dunia paralel. ', '2025-06-15 15:12:06'),
-(7, 'Harry Potter and the Philosopher\'s Stone', '221', 13, 5, 2, '1997', '/docs/Harry Potter and the Philosopher\'s Stone-15-06-2025 08:17:10pdf', '/images/cover/Harry Potter and the Philosopher\'s Stone-15-06-2025 08:17:10webp', 'Harry Potter and the Philosopher\'s Stone is a 2001 fantasy film directed by Chris Columbus and produced by David Heyman from a screenplay by Steve Kloves', '2025-06-15 15:17:10'),
-(8, '1984', '123', 14, 5, 2, '1990', '/docs/1984-15-06-2025 08:19:13.pdf', '/images/cover/1984-15-06-2025 08:19:13.jpg', 'novel distopia karya George Orwell yang diterbitkan pada tahun 1949. Novel ini menceritakan tentang kehidupan di Oceania', '2025-06-15 15:19:13'),
-(9, 'Sapiens: A Brief History of Humankind', '412', 13, 5, 3, '2005', '/docs/Sapiens: A Brief History of Humankind-15-06-2025 08:20:20.pdf', '/images/cover/Sapiens: A Brief History of Humankind-15-06-2025 08:20:20.jpg', 'Sapiens: Riwayat Singkat Umat Manusia atau Sapiens: A Brief History of Humankind adalah sebuah buku karya Yuval Noah Harari,', '2025-06-15 15:20:20');
+(1, 'Laskar Pelangi', '10', 1, 1, 1, '2005', '/docs/laskarpelangi.pdf', '/images/laskarpelangi.jpg', 'Novel inspiratif tentang anak-anak Belitung.', '2025-06-19 23:21:51'),
+(2, 'Bumi', '15', 2, 2, 1, '2014', '/docs/bumi.pdf', '/images/bumi.jpg', 'Petualangan remaja di dunia paralel.', '2025-06-19 23:21:51'),
+(3, 'Harry Potter and the Sorcerer\'s Stone', '20', 3, 3, 1, '1997', '/docs/harrypotter1.pdf', '/images/harrypotter1.jpg', 'Kisah penyihir muda di Hogwarts.', '2025-06-19 23:21:51'),
+(4, 'Sapiens', '12', 4, 2, 2, '2011', '/docs/sapiens.pdf', '/images/sapiens.jpg', 'Sejarah singkat umat manusia.', '2025-06-19 23:21:51'),
+(5, 'Matematika SMA Kelas 10', '30', 2, 1, 3, '2020', '/docs/matematika10.pdf', '/images/matematika10.jpg', 'Buku pelajaran matematika wajib.', '2025-06-19 23:21:51'),
+(6, 'Dear Nathan', '18', 2, 2, 4, '2016', '/docs/dearnathan.pdf', '/images/dearnathan.jpg', 'Cerita cinta anak SMA.', '2025-06-19 23:21:51'),
+(7, 'Sejarah Dunia', '9', 4, 1, 5, '2009', '/docs/sejarahdunia.pdf', '/images/sejarahdunia.jpg', 'Perjalanan sejarah umat manusia.', '2025-06-19 23:21:51'),
+(8, 'Finansial Cerdas', '25', 2, 1, 6, '2021', '/docs/finansialcerdas.pdf', '/images/finansialcerdas.jpg', 'Cara mengelola keuangan pribadi.', '2025-06-19 23:21:51'),
+(9, 'Ilmu Pengetahuan Ringan', '14', 4, 2, 7, '2022', '/docs/sainspop.pdf', '/images/sainspop.jpg', 'Pengetahuan umum dalam sains.', '2025-06-19 23:21:51');
+
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Table structure for table `categories'
 --
 
 CREATE TABLE `categories` (
@@ -128,12 +133,14 @@ CREATE TABLE `categories` (
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`name`, `description`, `gambar`) VALUES
-('Fiksi', 'Karya fiksi dan imajinatif', '1984.jpg'),
-('Non Fiksi', 'Berdasarkan fakta nyata', NULL),
-('Pendidikan', 'Buku pelajaran dan referensi', 'laskar-pelangi.jpg'),
-('Romansa', 'Cerita cinta dan hubungan emosional', 'bumi.jpg'),
-('Sejarah', 'Buku sejarah dan tokoh masa lalu', 'sapiens--a-brief-history-of-humankind.jpg');
+INSERT INTO `categories` (`id`, `name`, `description`, `gambar`) VALUES
+(1, 'Fiksi', 'Karya fiksi dan imajinatif', 'fantasi.jpg'),
+(2, 'Non Fiksi', 'Berdasarkan fakta nyata', 'non-fantasi.jpg'),
+(3, 'Pendidikan', 'Buku pelajaran dan referensi', 'pendidikan.jpg'),
+(4, 'Romansa', 'Cerita cinta dan hubungan emosional', 'romansa.jpg'),
+(5, 'Sejarah', 'Buku sejarah dan tokoh masa lalu', 'sejarah.jpg'),
+(6, 'Keuangan', 'Investasi dan manajemen keuangan', 'finansialcerdas.jpg'),
+(7, 'Sains Populer', 'Ilmu pengetahuan populer', 'sainspop.jpg');
 
 -- --------------------------------------------------------
 

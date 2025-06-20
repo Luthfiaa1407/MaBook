@@ -46,34 +46,27 @@ $favorites = $result->fetch_all(MYSQLI_ASSOC);
       </p>
 
       <?php if ($favorites): ?>
-        <section class="flex flex-wrap justify-center gap-6">
+        <section class="grid grid-cols-4 gap-8">
           <?php foreach ($favorites as $fav): ?>
             <a href="../baca.php?id=<?= $fav['id'] ?>" class="group">
-              <div class="bg-mabook-dark rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition max-w-[280px] flex flex-col h-full">
-
-                <!-- Kotak gambar: tinggi 256 px, lebar penuh -->
-                <div class="w-full h-64 overflow-hidden">
-                  <img
-                    src="<?= htmlspecialchars('../' . ltrim($fav['cover'], '/')) ?>"
-                    alt="Cover Buku <?= htmlspecialchars($fav['title']) ?>"
-                    class="w-full h-full object-cover"  <!-- ganti object-cover ➜ object-contain kalau tak mau crop -->
-                    onerror="this.src='../images/default-cover.jpg';"
-                  />
-                </div>
-
-                <!-- Konten -->
-                <div class="p-4 flex flex-col justify-between flex-grow h-[250px]">
+              <div class="group-hover:-translate-y-1 duration-200 text-mabook-light h-full flex flex-col items-start justify-start p-4 border border-mabook-midtone/25 gap-5 bg-mabook-primary relative rounded-xl overflow-hidden font-crimson">
+                <img
+                  src="<?= htmlspecialchars('../' . ltrim($fav['cover'], '/')) ?>"
+                  alt="Cover Buku <?= htmlspecialchars($fav['title']) ?>"
+                  class="w-full"
+                  onerror="this.src='../images/default-cover.jpg';"
+                />
+                <div class="flex flex-col gap-3">
+                  <h2 class="text-3xl"><?= htmlspecialchars($fav['title']) ?></h2>
                   <div>
-                    <h2 class="text-xl font-bold mb-1"><?= htmlspecialchars($fav['title']) ?></h2>
                     <p class="text-sm text-mabook-midtone mb-3">
                       <?= htmlspecialchars(mb_strimwidth($fav['description'], 0, 120, '...')) ?>
                     </p>
                   </div>
-                  <span class="inline-block px-3 py-1 bg-mabook-midtone text-mabook-dark rounded hover:bg-mabook-light transition text-center mt-auto">
-                    Baca Buku
-                  </span>
                 </div>
-
+                <span class="inline-block px-3 py-1 bg-mabook-midtone text-mabook-dark rounded hover:bg-mabook-light transition text-center mt-auto">
+                  Baca Buku
+                </span>
               </div>
             </a>
           <?php endforeach; ?>

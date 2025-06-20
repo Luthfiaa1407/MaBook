@@ -6,11 +6,15 @@ require_once __DIR__ . '/functions/helper.php';
 require_once __DIR__ . '/functions/guest.php';
 
 // Check if user is already logged in
-$isLoggedIn = isset($_SESSION['logged_user']);
-$loggedUser = $isLoggedIn ? $_SESSION['logged_user'] : null;
-
-// Redirect if already logged in
-if ($isLoggedIn) {
+if (isset($_SESSION['logged_user'])) {
+    $loggedUser = $_SESSION['logged_user'];
+    
+    // Set cache control headers to prevent caching
+    header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+    header("Cache-Control: post-check=0, pre-check=0", false);
+    header("Pragma: no-cache");
+    
+    // Redirect based on role
     if ($loggedUser['role'] == 'ADMIN') {
         header('Location: admin/dashboard.php');
     } else {
@@ -20,12 +24,13 @@ if ($isLoggedIn) {
 }
 
 // Initialize variables
-$errors = [];
+$errors = $_SESSION['errors'] ?? [];
 $old = $_SESSION['old'] ?? [];
 $error = $_SESSION['error'] ?? null;
 $success = $_SESSION['success'] ?? null;
 
 // Clear session messages after displaying them
+unset($_SESSION['errors']);
 unset($_SESSION['error']);
 unset($_SESSION['success']);
 unset($_SESSION['old']);
@@ -53,6 +58,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $loggedUser = login($username, $username, $password);
     if ($loggedUser) {
         $_SESSION['logged_user'] = $loggedUser;
+        
+        // Regenerate session ID to prevent session fixation
+        session_regenerate_id(true);
+        
+        // Set cache control headers
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+        header("Cache-Control: post-check=0, pre-check=0", false);
+        header("Pragma: no-cache");
+        
+        // Redirect based on role
         if ($loggedUser['role'] == 'ADMIN') {
             header('Location: admin/dashboard.php');
         } else {
@@ -67,7 +82,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,6 +91,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <title>Mabook - Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="src/output.css">
+    <!-- Prevent caching -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 </head>
 
 <body class="bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] bg-[#1A120B]">
@@ -94,26 +112,37 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <?php endif; ?>
             <?php if (isset($error)) : ?>
                 <div class="p-3 bg-red-400 text-mabook-primary rounded-xl font-crimson font-semibold flex gap-2 items-center">
-                    <i class="fas fa-check"></i>
-                    <?= $error ?>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <?= htmlspecialchars($error) ?>
                 </div>
             <?php endif; ?>
             <form action="#" method="POST">
-                <input type="text" name="username" placeholder="Your email/username..." class="mabook-guest-input" value="<?= $old['username'] ?? '' ?>">
+                <input type="text" name="username" placeholder="Your email/username..." class="mabook-guest-input" value="<?= htmlspecialchars($old['username'] ?? '') ?>">
                 <?php if (isset($errors['username'])) : ?>
-                    <span class="text-sm text-red-400 italic"><?= $errors['username'] ?></span>
+                    <span class="text-sm text-red-400 italic"><?= htmlspecialchars($errors['username']) ?></span>
                 <?php endif; ?>
 
                 <input type="password" name="password" placeholder="Your password..." class="mabook-guest-input">
                 <?php if (isset($errors['password'])) : ?>
-                    <span class="text-sm text-red-400 italic"><?= $errors['password'] ?></span>
+                    <span class="text-sm text-red-400 italic"><?= htmlspecialchars($errors['password']) ?></span>
                 <?php endif; ?>
 
-                <button type="submit" class="block bg-mabook-midtone p-3 text-center w-full mt-4 font-crimson font-bold text-lg cursor-pointer active:translate-y-0.5">Sign in</button>
+                <button type="submit" class="block bg-mabook-midtone p-3 text-center w-full mt-4 font-crimson font-bold text-lg cursor-pointer active:translate-y-0.5 hover:bg-mabook-dark transition">Sign in</button>
             </form>
-            <div class="italic text-sm text-center mt-2">Gapunya akun? Bikin dulu <a href="register.php" class="underline">disini</a>.</div>
+            <div class="italic text-sm text-center mt-2">Gapunya akun? Bikin dulu <a href="register.php" class="underline hover:text-mabook-midtone transition">disini</a>.</div>
         </div>
     </div>
+    
+    <script>
+        // Prevent going back to login page after login
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+        
+        // Clear form data when page is refreshed
+        if (performance.navigation.type == 1) {
+            window.location.href = 'login.php';
+        }
+    </script>
 </body>
-
 </html>

@@ -1,3 +1,17 @@
+<?php
+// Error reporting untuk debugging
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+// Start session jika belum
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Include koneksi database & helper jika diperlukan
+require_once(__DIR__ . '/config/db.php');
+require_once(__DIR__ . '/functions/helper.php');
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -14,7 +28,6 @@
   <!-- Styles -->
   <link rel="stylesheet" href="src/output.css">
   <style>
-    /* Style improvement */
     .team-member-card { transition: all 0.3s ease; position: relative; overflow: hidden; }
     .team-member-card::before {
       content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background-color: #D4AF37;
@@ -178,6 +191,5 @@
   </main>
 
   <?php require_once(__DIR__ . '/include/footer.php'); ?>
-
 </body>
 </html>

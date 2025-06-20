@@ -7,7 +7,7 @@ require_once(__DIR__ . '/../config/db.php');
 require_once(__DIR__ . '/../config/config.php');
 require_once(__DIR__ . '/../functions/helper.php');
 
-$userId = $_SESSION['logged_user'] ?? null;
+$userId = $_SESSION['logged_user']['id'] ?? null;
 
 if (!$userId) {
     header("Location: ../login.php");

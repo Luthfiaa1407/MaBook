@@ -42,7 +42,7 @@ require_once(__DIR__ . '/functions/helper.php');
           <div class="team-grid">
             <!-- Arjuna -->
             <div class="team-member">
-              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="Arjuna" class="member-photo">
+              <img src="https://pin.it/52dS4KOjY" alt="Arjuna" class="member-photo">
               <h3 class="member-name">Arjuna Gunatama Sihombing</h3>
               <span class="member-position">2317051085</span>
               <p class="member-bio">Bertanggung jawab atas pengembangan sistem inti Mabook dan arsitektur backend.</p>
@@ -66,7 +66,7 @@ require_once(__DIR__ . '/functions/helper.php');
 
             <!-- Luthfia -->
             <div class="team-member">
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="Luthfia" class="member-photo">
+              <img src="../images/lut" alt="Luthfia" class="member-photo">
               <h3 class="member-name">Luthfia Rahma Sholihah</h3>
               <span class="member-position">2317051051</span>
               <p class="member-bio">Bertanggung jawab atas pengembangan sistem inti Mabook dan arsitektur backend Admin serta mendesain pengalaman pengguna yang elegan dan fungsional dengan sentuhan klasik.</p>
@@ -78,7 +78,7 @@ require_once(__DIR__ . '/functions/helper.php');
 
             <!-- Sheva -->
             <div class="team-member">
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="Sheva" class="member-photo">
+              <img src="../images/shev.jpeg" alt="Sheva" class="member-photo">
               <h3 class="member-name">Sheva Lukiyanto</h3>
               <span class="member-position">2317051046</span>
               <p class="member-bio">Bertanggung jawab atas pengembangan sistem inti Mabook dan arsitektur backend.</p>

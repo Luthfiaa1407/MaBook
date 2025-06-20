@@ -1,10 +1,23 @@
-<?php require_once(__DIR__ . '/../config/config.php') ?>
-<?php require_once(__DIR__ . '/../functions/helper.php') ?>
-<?php require_once(__DIR__ . '/../functions/books.php') ?>
-<?php require_once(__DIR__ . '/../functions/authors.php') ?>
-<?php require_once(__DIR__ . '/../functions/categories.php') ?>
-<?php require_once(__DIR__ . '/../functions/publishers.php') ?>
 <?php
+// Ensure session is started only once
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+require_once(__DIR__ . '/../config/config.php');
+require_once(__DIR__ . '/../functions/helper.php');
+require_once(__DIR__ . '/../functions/books.php');
+require_once(__DIR__ . '/../functions/authors.php');
+require_once(__DIR__ . '/../functions/categories.php');
+require_once(__DIR__ . '/../functions/publishers.php');
+
+if (!isset($_SESSION['logged_user']['id'])) {
+    header("Location: ../login.php");
+    exit;
+}
+
+$userId = $_SESSION['logged_user']['id'];
+
 // ambil query parameter dari url
 $search = $_GET['search'] ?? null;
 $categoryId = $_GET['category_id'] ?? null;
@@ -25,6 +38,22 @@ $authors = listAuthors([], ['limit' => 999]);
 $categories = listCategories([], ['limit' => 999]);
 $publishers = listPublishers([], ['limit' => 999]);
 $years = listBookYears();
+
+// Handle adding to favorites
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'add_favorite') {
+    $bookId = $_POST['book_id'] ?? null;
+    if ($bookId && $userId) {
+        $stmt = $conn->prepare("INSERT INTO favorites (user_id, book_id, created_at) VALUES (?, ?, NOW())");
+        if ($stmt) {
+            $stmt->bind_param("ii", $userId, $bookId);
+            $stmt->execute();
+            $stmt->close();
+        } else {
+            // Debug: Check if the prepare failed
+            die("Prepare failed: " . $conn->error);
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -36,14 +65,12 @@ $years = listBookYears();
     <title>Mabook</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../src/output.css">
-
 </head>
 
 <body class="bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] bg-[#1A120B]">
     <?php require_once(__DIR__ . '/../include/header.php') ?>
 
     <div class="w-11/12 max-w-[1200px] mx-auto mt-12 ">
-
         <div>
             <div class="font-unifraktur text-mabook-light text-4xl font-bold">Koleksi Maboo<span class="font-crimson">k</span></div>
             <div class="h-[2px] w-48 bg-mabook-midtone mt-4"></div>
@@ -86,14 +113,17 @@ $years = listBookYears();
                                     <div>Penerbit: <span><?= $book['publisher']['name'] ?>, <?= $book['year'] ?></span></div>
                                 </div>
                             </div>
+                            <form method="POST" style="display:inline;">
+                                <input type="hidden" name="book_id" value="<?= $book['id'] ?>">
+                                <input type="hidden" name="action" value="add_favorite">
+                                <button type="submit" class="inline-block px-3 py-1 bg-mabook-midtone text-mabook-dark rounded hover:bg-mabook-light transition text-center mt-auto">Add to Favorites</button>
+                            </form>
                         </div>
                     </a>
                 <?php endforeach; ?>
-
             </div>
-        </div> <!-- end value proposition -->
-
-    </div> <!-- end container -->
+        </div>
+    </div>
 
     <?php require_once(__DIR__ . '/../include/footer.php') ?>
     <script>
@@ -107,8 +137,6 @@ $years = listBookYears();
         const filterPublisherEl = document.querySelector('#filter-publisher');
         const filterYearEl = document.querySelector('#filter-year');
 
-
-        // ini kalo filter catgeory berubah
         filterCategoryEl.addEventListener('change', e => {
             value = e.target.value
             if (!value) delete filterObj.category_id
@@ -116,7 +144,6 @@ $years = listBookYears();
             redirectToFilter()
         })
 
-        // ini kalo filter author berubah
         filterAuthorEl.addEventListener('change', e => {
             value = e.target.value
             if (!value) delete filterObj.author_id
@@ -124,7 +151,6 @@ $years = listBookYears();
             redirectToFilter()
         })
 
-        // ini kalo filter publisher berubah
         filterPublisherEl.addEventListener('change', e => {
             value = e.target.value
             if (!value) delete filterObj.publisher_id
@@ -132,7 +158,6 @@ $years = listBookYears();
             redirectToFilter()
         })
 
-        // ini kalo filter year berubah
         filterYearEl.addEventListener('change', e => {
             value = e.target.value
             if (!value) delete filterObj.year
@@ -142,9 +167,8 @@ $years = listBookYears();
 
         function redirectToFilter() {
             const query = new URLSearchParams(filterObj).toString()
-            window.location.href = ${window.location.pathname}?${query}
+            window.location.href = `${window.location.pathname}?${query}`
         }
     </script>
 </body>
-
 </html>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 19, 2025 at 02:59 PM
--- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- Waktu pembuatan: 20 Jun 2025 pada 01.47
+-- Versi server: 8.4.3
+-- Versi PHP: 8.3.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,82 +24,63 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `authors`
+-- Struktur dari tabel `authors`
 --
 
 CREATE TABLE `authors` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `website` varchar(255) NOT NULL,
-  `description` mediumtext NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `website` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` mediumtext COLLATE utf8mb4_general_ci,
   `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `authors`
+-- Dumping data untuk tabel `authors`
 --
 
 INSERT INTO `authors` (`id`, `name`, `website`, `description`, `created_at`) VALUES
-(1, 'Cahyo', 'cahyo.web.id', 'mantep cuy', '2012-02-12 00:00:00'),
-(2, 'Wawan', 'wawan.web.id', 'oke', '2011-02-01 00:00:00'),
-(3, 'Gunawan ', 'gunawan.cong', 'ya gunawan', '2025-06-14 21:36:58'),
-(4, 'Stephen Cox', 'coxueueue.com', 'ya', '2025-06-14 21:37:35'),
-(5, 'Jack Wildeyeeee', 'wileye.oye', 'Ya, oye', '2025-06-14 21:37:54'),
-(6, 'Dave Ettiad', 'davecuy.co.us', 'Ya, anjay', '2025-06-14 21:38:29'),
-(7, 'Wright Britton Oye', 'brrrpatapim.co.uk', 'Ya, okelhh', '2025-06-14 21:38:54'),
-(11, 'Andrea Hirata', 'https://andreahirata.com', 'Penulis novel terkenal asal Indonesia, dikenal lewat karya-karya inspiratif seperti Laskar Pelangi.', '2025-06-15 14:13:41'),
-(12, 'Tere Liye', 'tereliye.com', 'Penulis produktif Indonesia yang banyak menulis novel bergenre drama, fantasi, dan motivasi.', '2025-06-15 14:14:01'),
-(13, 'J.K. Rowling', 'rowling.com', 'Penulis asal Inggris, pencipta seri novel Harry Potter yang sangat terkenal di seluruh dunia.', '2025-06-15 14:14:19'),
-(14, 'George Orwell', 'https://orwellfoundation.com', 'Penulis dan jurnalis Inggris yang dikenal dengan karya distopia seperti 1984 dan Animal Farm.', '2025-06-15 14:14:32'),
-(15, 'Yuval Noah Harari', 'https://www.ynharari.com', 'Sejarawan dan penulis asal Israel yang dikenal lewat buku Sapiens dan Homo Deus.', '2025-06-15 14:14:46');
+(1, 'Andrea Hirata', 'https://andreahirata.com', 'Penulis Laskar Pelangi', '2025-06-19 23:21:50'),
+(2, 'Tere Liye', 'https://tereliye.com', 'Penulis novel fiksi populer', '2025-06-19 23:21:50'),
+(3, 'J.K. Rowling', 'https://rowling.com', 'Penulis Harry Potter', '2025-06-19 23:21:50'),
+(4, 'Yuval Noah Harari', 'https://ynharari.com', 'Penulis buku sejarah dan masa depan manusia', '2025-06-19 23:21:50');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bookmarks`
+-- Struktur dari tabel `bookmarks`
 --
 
 CREATE TABLE `bookmarks` (
-  `id` bigint NOT NULL,
-  `user_id` bigint UNSIGNED NOT NULL,
-  `book_id` bigint UNSIGNED NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED DEFAULT NULL,
+  `book_id` bigint UNSIGNED DEFAULT NULL,
   `last_page_read` int DEFAULT NULL,
-  `last_read` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `bookmarks`
---
-
-INSERT INTO `bookmarks` (`id`, `user_id`, `book_id`, `last_page_read`, `last_read`) VALUES
-(3, 3, 9, 1, '2025-06-15 16:57:39'),
-(4, 3, 7, 0, '2025-06-14 16:58:01'),
-(5, 3, 8, 3, '2025-06-15 18:34:17'),
-(6, 3, 6, 2, '2025-06-15 17:41:59'),
-(7, 4, 8, 3, '2025-06-15 18:11:58');
+  `last_read` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `books`
+-- Struktur dari tabel `books`
 --
 
 CREATE TABLE `books` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `exemplars` varchar(255) NOT NULL,
-  `author_id` bigint UNSIGNED NOT NULL,
-  `publisher_id` bigint UNSIGNED NOT NULL,
-  `category_id` bigint UNSIGNED NOT NULL,
-  `year` varchar(255) NOT NULL,
-  `file` mediumtext NOT NULL,
-  `cover` mediumtext NOT NULL,
-  `description` mediumtext NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `exemplars` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `author_id` bigint UNSIGNED DEFAULT NULL,
+  `publisher_id` bigint UNSIGNED DEFAULT NULL,
+  `category_id` bigint UNSIGNED DEFAULT NULL,
+  `year` varchar(4) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `file` mediumtext COLLATE utf8mb4_general_ci,
+  `cover` mediumtext COLLATE utf8mb4_general_ci,
+  `description` mediumtext COLLATE utf8mb4_general_ci,
   `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `books`
+-- Dumping data untuk tabel `books`
 --
 
 INSERT INTO `books` (`id`, `title`, `exemplars`, `author_id`, `publisher_id`, `category_id`, `year`, `file`, `cover`, `description`, `created_at`) VALUES
@@ -113,24 +94,21 @@ INSERT INTO `books` (`id`, `title`, `exemplars`, `author_id`, `publisher_id`, `c
 (8, 'Finansial Cerdas', '25', 2, 1, 6, '2021', '/docs/finansialcerdas.pdf', '/images/finansialcerdas.jpg', 'Cara mengelola keuangan pribadi.', '2025-06-19 23:21:51'),
 (9, 'Ilmu Pengetahuan Ringan', '14', 4, 2, 7, '2022', '/docs/sainspop.pdf', '/images/sainspop.jpg', 'Pengetahuan umum dalam sains.', '2025-06-19 23:21:51');
 
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories'
+-- Struktur dari tabel `categories'
 --
 
 CREATE TABLE `categories` (
-  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `description` mediumtext NOT NULL,
-  `gambar` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
+  `id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `description` mediumtext COLLATE utf8mb4_general_ci,
+  `gambar` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `categories`
+-- Dumping data untuk tabel `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `description`, `gambar`) VALUES
@@ -145,31 +123,28 @@ INSERT INTO `categories` (`id`, `name`, `description`, `gambar`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comments`
+-- Struktur dari tabel `comments`
 --
 
 CREATE TABLE `comments` (
   `id` int NOT NULL,
-  `comment` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `book_id` bigint UNSIGNED NOT NULL,
-  `user_id` bigint UNSIGNED NOT NULL,
+  `comment` mediumtext COLLATE utf8mb4_general_ci NOT NULL,
+  `book_id` bigint UNSIGNED DEFAULT NULL,
+  `user_id` bigint UNSIGNED DEFAULT NULL,
   `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `comments`
+-- Dumping data untuk tabel `comments`
 --
 
 INSERT INTO `comments` (`id`, `comment`, `book_id`, `user_id`, `created_at`) VALUES
-(2, 'Mantep, oke juga', 8, 3, '2025-06-15 17:25:21'),
-(3, 'Sip,  bagus.', 8, 3, '2025-06-15 17:25:58'),
-(4, 'Oke juga ini', 6, 3, '2025-06-15 17:41:57'),
-(5, 'Wokeh,  terinspirasi saya', 8, 4, '2025-06-15 18:11:48');
+(1, 'wailah', 3, 1, '2025-06-20 07:27:16');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `favorites`
+-- Struktur dari tabel `favorites`
 --
 
 CREATE TABLE `favorites` (
@@ -180,7 +155,7 @@ CREATE TABLE `favorites` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `favorites`
+-- Dumping data untuk tabel `favorites`
 --
 
 INSERT INTO `favorites` (`id`, `user_id`, `book_id`, `created_at`) VALUES
@@ -189,205 +164,210 @@ INSERT INTO `favorites` (`id`, `user_id`, `book_id`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `publishers`
+-- Struktur dari tabel `publishers`
 --
 
 CREATE TABLE `publishers` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `website` varchar(255) NOT NULL,
-  `description` mediumtext NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `website` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `description` mediumtext COLLATE utf8mb4_general_ci,
   `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `publishers`
+-- Dumping data untuk tabel `publishers`
 --
 
 INSERT INTO `publishers` (`id`, `name`, `website`, `description`, `created_at`) VALUES
-(1, 'Elex Mediaaa', 'elex.comac', 'elekc', '2025-06-14 22:32:48'),
-(3, 'Bentang Pustaka', 'https://bentangpustaka.com', 'Penerbit buku Indonesia yang menerbitkan berbagai buku fiksi dan non-fiksi berkualitas.', '2025-06-15 14:15:03'),
-(4, 'Gramedia Pustaka Utama', 'https://gpu.id', 'Salah satu penerbit terbesar di Indonesia, terkenal dengan karya sastra dan buku populer.', '2025-06-15 14:15:15'),
-(5, 'Bloomsbury Publishing', 'https://www.bloomsbury.com', 'Penerbit asal Inggris yang menerbitkan buku-buku besar seperti seri Harry Potter.', '2025-06-15 14:15:28');
+(1, 'Gramedia', 'https://gramedia.com', 'Penerbit besar Indonesia', '2025-06-19 23:21:51'),
+(2, 'Bentang Pustaka', 'https://bentangpustaka.com', 'Penerbit fiksi & nonfiksi', '2025-06-19 23:21:51'),
+(3, 'Bloomsbury', 'https://bloomsbury.com', 'Penerbit asal Inggris', '2025-06-19 23:21:51');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `read_points`
+-- Struktur dari tabel `read_points`
 --
 
 CREATE TABLE `read_points` (
   `id` bigint UNSIGNED NOT NULL,
-  `user_id` bigint UNSIGNED NOT NULL,
-  `book_id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED DEFAULT NULL,
+  `book_id` bigint UNSIGNED DEFAULT NULL,
   `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `role` enum('ADMIN','USER') NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `role` enum('ADMIN','USER') COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `username`, `password`, `role`, `created_at`) VALUES
-(5, 'sheva', 'shevaluki02092005@gmail.com', 'luck0209', '$2y$10$/8NnyU4FdXm/a3zl5/Hl9uevYsg1IMf0DZthjiLESIVhwfKpS1nSy', 'USER', '2025-06-19 21:00:10');
+(1, 'Arjuna Gunatama Sihombing', 'arjuna@gmail.com', 'Rjun', '$2y$10$z3ZHGeJng5ff0AVYMNv/zOweYd3jQcsck2lKM7qH9M6sKKMXExCL.', 'USER', '2025-06-19 23:23:24'),
+(2, 'admin123', 'admin@gmail.com', 'adminkece', '$2y$10$TZrXnu4InVNh6.BL/CLJdejRrJtIMVfNu.XxDbBZ83v/4ww57JBK.', 'ADMIN', '2025-06-19 23:24:06'),
+(3, 'arjuna tamvan', 'arjuna1@gmail.com', 'arjuna', '$2y$10$EqHzXr5ilUS5IrD97L3daOPnrQ.MEy36gHdT/zsFrl73KUC.4YH6u', 'USER', '2025-06-20 07:42:06'),
+(4, 'arjuna keche', 'arjuna2@gmail.com', 'arjuna', '$2y$10$yO8UriO5MJ0uHjjqmrSg9O/RF.rKp4R9lG51FKWdXzL6sBqOukOEi', 'USER', '2025-06-20 07:47:53');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `authors`
+-- Indeks untuk tabel `authors`
 --
 ALTER TABLE `authors`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `bookmarks`
+-- Indeks untuk tabel `bookmarks`
 --
 ALTER TABLE `bookmarks`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`),
-  ADD KEY `bookmarks_index_0` (`user_id`),
-  ADD KEY `bookmarks_index_1` (`book_id`);
+  ADD KEY `book_id` (`book_id`),
+  ADD KEY `fk_bookmarks_user` (`user_id`);
 
 --
--- Indexes for table `books`
+-- Indeks untuk tabel `books`
 --
 ALTER TABLE `books`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `books_index_0` (`author_id`),
-  ADD KEY `books_index_1` (`publisher_id`),
-  ADD KEY `books_index_2` (`category_id`);
+  ADD KEY `author_id` (`author_id`),
+  ADD KEY `publisher_id` (`publisher_id`),
+  ADD KEY `category_id` (`category_id`);
 
 --
--- Indexes for table `categories`
+-- Indeks untuk tabel `categories`
 --
 ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `comments`
+-- Indeks untuk tabel `comments`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`),
   ADD KEY `book_id` (`book_id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `fk_comments_user` (`user_id`);
 
 --
--- Indexes for table `favorites`
---
-ALTER TABLE `favorites`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `user_book_unique` (`user_id`,`book_id`),
-  ADD KEY `book_id` (`book_id`);
-
---
--- Indexes for table `publishers`
+-- Indeks untuk tabel `publishers`
 --
 ALTER TABLE `publishers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `read_points`
+-- Indeks untuk tabel `read_points`
 --
 ALTER TABLE `read_points`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`),
-  ADD KEY `read_points_index_0` (`user_id`),
-  ADD KEY `read_points_index_1` (`book_id`);
+  ADD KEY `book_id` (`book_id`),
+  ADD KEY `fk_readpoints_user` (`user_id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `users_index_0` (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `authors`
+-- AUTO_INCREMENT untuk tabel `authors`
 --
 ALTER TABLE `authors`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `bookmarks`
+-- AUTO_INCREMENT untuk tabel `bookmarks`
 --
 ALTER TABLE `bookmarks`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `books`
+-- AUTO_INCREMENT untuk tabel `books`
 --
 ALTER TABLE `books`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `categories`
+-- AUTO_INCREMENT untuk tabel `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `comments`
+-- AUTO_INCREMENT untuk tabel `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `favorites`
---
-ALTER TABLE `favorites`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `publishers`
+-- AUTO_INCREMENT untuk tabel `publishers`
 --
 ALTER TABLE `publishers`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `read_points`
+-- AUTO_INCREMENT untuk tabel `read_points`
 --
 ALTER TABLE `read_points`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `favorites`
+-- Ketidakleluasaan untuk tabel `bookmarks`
 --
-ALTER TABLE `favorites`
-  ADD CONSTRAINT `favorites_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `favorites_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`) ON DELETE CASCADE;
+ALTER TABLE `bookmarks`
+  ADD CONSTRAINT `bookmarks_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`),
+  ADD CONSTRAINT `fk_bookmarks_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `books`
+--
+ALTER TABLE `books`
+  ADD CONSTRAINT `books_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `authors` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `books_ibfk_2` FOREIGN KEY (`publisher_id`) REFERENCES `publishers` (`id`),
+  ADD CONSTRAINT `books_ibfk_3` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`);
+
+--
+-- Ketidakleluasaan untuk tabel `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`),
+  ADD CONSTRAINT `fk_comments_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Ketidakleluasaan untuk tabel `read_points`
+--
+ALTER TABLE `read_points`
+  ADD CONSTRAINT `fk_readpoints_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `read_points_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

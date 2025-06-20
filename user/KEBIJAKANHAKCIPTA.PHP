@@ -1,7 +1,7 @@
 <?php
-require_once(__DIR__ . '/config/db.php');
-require_once(__DIR__ . '/config/config.php');
-require_once(__DIR__ . '/functions/helper.php');
+require_once(__DIR__ . '/../config/db.php');
+require_once(__DIR__ . '/../config/config.php');
+require_once(__DIR__ . '/../functions/helper.php');
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@ require_once(__DIR__ . '/functions/helper.php');
 
   <!-- Font & Tailwind -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="src/output.css" />
+  <link rel="stylesheet" href="../src/output.css" />
   <style>
     /*—– Gulungan Kertas Vintage —–*/
     .scroll-paper{
@@ -38,7 +38,7 @@ require_once(__DIR__ . '/functions/helper.php');
 
 <body class="bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')] bg-[#2a1e10] font-crimson">
 
-  <?php require_once(__DIR__ . '/include/header.php'); ?>
+  <?php require_once(__DIR__ . '/../include/header.php'); ?>
 
   <main class="scroll-paper">
     <h1>Kebijakan Hak Cipta</h1>
@@ -101,7 +101,7 @@ require_once(__DIR__ . '/functions/helper.php');
     <p class="mt-6 italic text-sm">Terakhir diperbarui: <?= date('d F Y') ?></p>
   </main>
 
-  <?php require_once(__DIR__ . '/include/footer.php'); ?>
+  <?php require_once(__DIR__ . '/../include/footer.php'); ?>
 
 </body>
 </html>

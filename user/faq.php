@@ -1,8 +1,8 @@
 <?php
 // Konfigurasi dan helper
-require_once(__DIR__ . '/config/db.php');
-require_once(__DIR__ . '/config/config.php');
-require_once(__DIR__ . '/functions/helper.php');
+require_once(__DIR__ . '/../config/db.php');
+require_once(__DIR__ . '/../config/config.php');
+require_once(__DIR__ . '/../functions/helper.php');
 ?>
 
 <!DOCTYPE html>
@@ -15,12 +15,12 @@ require_once(__DIR__ . '/functions/helper.php');
 
   <!-- FontAwesome & Tailwind -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="src/output.css" />
+  <link rel="stylesheet" href="../src/output.css" />
 </head>
 
 <body class="bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')] bg-[#1A120B]">
 
-  <?php require_once(__DIR__ . '/include/header.php'); ?>
+  <?php require_once(__DIR__ . '/../include/header.php'); ?>
 
   <div class="w-11/12 max-w-[1200px] mx-auto mt-12">
     <section id="faq" class="py-12">
@@ -83,7 +83,7 @@ require_once(__DIR__ . '/functions/helper.php');
     </section>
   </div>
 
-  <?php require_once(__DIR__ . '/include/footer.php'); ?>
+  <?php require_once(__DIR__ . '/../include/footer.php'); ?>
 
   <!-- Accordion Script -->
   <script>

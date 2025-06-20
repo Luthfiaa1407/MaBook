@@ -1,7 +1,7 @@
 <?php
-require_once(__DIR__.'/config/db.php');
-require_once(__DIR__.'/config/config.php');
-require_once(__DIR__.'/functions/helper.php');
+require_once(__DIR__.'/../config/db.php');
+require_once(__DIR__.'/../config/config.php');
+require_once(__DIR__.'/../functions/helper.php');
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -12,7 +12,7 @@ require_once(__DIR__.'/functions/helper.php');
 
   <!-- FontAwesome & Tailwind -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link rel="stylesheet" href="src/output.css"/>
+  <link rel="stylesheet" href="../src/output.css"/>
 
   <style>
     header { z-index: 50; }
@@ -60,7 +60,7 @@ require_once(__DIR__.'/functions/helper.php');
 
 <body class="bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')] bg-[#2a1e10] font-crimson">
 
-<?php require_once(__DIR__.'/include/header.php'); ?>
+<?php require_once(__DIR__.'/../include/header.php'); ?>
 
 <main class="w-11/12 max-w-[1200px] mx-auto pt-20 pb-12">  <!-- ruang 80 px di bawah header -->
   <div class="main-container">
@@ -93,7 +93,7 @@ require_once(__DIR__.'/functions/helper.php');
   </div>
 </main>
 
-<?php require_once(__DIR__.'/include/footer.php'); ?>
+<?php require_once(__DIR__.'/../include/footer.php'); ?>
 
 <script>
 function toggleDropdown(header){

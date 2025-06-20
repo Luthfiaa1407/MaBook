@@ -1,7 +1,7 @@
 <?php
-require_once(__DIR__ . '/config/db.php');
-require_once(__DIR__ . '/config/config.php');
-require_once(__DIR__ . '/functions/helper.php');
+require_once(__DIR__ . '/../config/db.php');
+require_once(__DIR__ . '/../config/config.php');
+require_once(__DIR__ . '/../functions/helper.php');
 ?>
 
 <!DOCTYPE html>
@@ -13,12 +13,12 @@ require_once(__DIR__ . '/functions/helper.php');
   <title>Tentang Kami - Mabook</title>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="src/output.css">
-  <link rel="stylesheet" href="src/footercss.css">
+  <link rel="stylesheet" href="../src/output.css">
+  <link rel="stylesheet" href="../src/footercss.css">
 </head>
 
 <body>
-  <?php require_once(__DIR__ . '/include/header.php'); ?>
+  <?php require_once(__DIR__ . '/../include/header.php'); ?>
 
   <main class="w-11/12 max-w-6xl mx-auto">
     <section class="about-hero">

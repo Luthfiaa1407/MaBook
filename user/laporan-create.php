@@ -67,7 +67,7 @@ unset($_SESSION['errors'], $_SESSION['old']);
 <div class="w-11/12 max-w-[800px] mx-auto mt-12 relative">
   <div>
     <div class="font-crimson text-mabook-light flex justify-between items-center">
-      <div class="text-3xl">Laporkan Masalah Buku</div>
+      <div class="text-3xl">Berikan Commentar anda terhadap Buku Buku Kami</div>
       <a href="laporan.php" class="bg-mabook-midtone text-white/80 py-2 px-4 rounded-xl duration-200 hover:-translate-y-0.5 active:translate-y-1">
         <div class="flex gap-2 items-center font-semibold">
           <i class="fas fa-chevron-left"></i>

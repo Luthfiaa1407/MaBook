@@ -45,7 +45,7 @@ alt="<?= htmlspecialchars($kategori['name']) ?>" class="category-img" />
         <div class="category-content p-4">
             <h3 class="category-title text-xl font-bold text-mabook-light mb-1"><?= htmlspecialchars($kategori['name']) ?></h3>
             <p class="category-desc text-sm text-mabook-midtone mb-3"><?= htmlspecialchars($kategori['description']) ?></p>
-            <a href="kategori_detail.php?id=<?= $kategori['id'] ?>" class="category-btn inline-block px-4 py-2 bg-mabook-midtone text-mabook-dark rounded hover:bg-mabook-light transition">
+            <a href="koleksi.php?id=<?= $kategori['id'] ?>" class="category-btn inline-block px-4 py-2 bg-mabook-midtone text-mabook-dark rounded hover:bg-mabook-light transition">
                 Lihat Buku
             </a>
         </div>

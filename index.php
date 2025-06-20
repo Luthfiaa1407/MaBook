@@ -19,7 +19,7 @@
     <div class="w-11/12 max-w-[1200px] mx-auto mt-12">
         <div class="hero w-full shadow-[0_10px_20px_rgba(0,0,0,0.5)]">
             <div class="w-10/12 max-w-[1000px] mx-auto px-16 py-32 gap-12 flex flex-col items-center justify-center">
-                <div class="font-unifraktur text-mabook-light text-5xl font-bold">Mabook<span class="font-crimson">k</span></div>
+                <div class="font-unifraktur text-mabook-light text-5xl font-bold">Maboo<span class="font-crimson">k</span></div>
                 <p class="font-crimson text-xl text-center text-white">
                     Perpustakaan digital yang menghadirkan koleksi literatur klasik dan kontemporer terbaik. Temukan dunia pengetahuan, fiksi spekulatif, puisi abadi, dan karya-karya pemikiran mendalam dalam genggaman Anda.
                 </p>
